@@ -1,0 +1,49 @@
+<div class="modal-content" *ngIf="previewJobRequest.dialogueName == 'preview-post-job'">
+  <h2 mat-dialog-title>Preview to confirm added job detail</h2>
+  <mat-dialog-content class="mat-typography">
+    <h3>Company</h3>
+    <mat-divider></mat-divider>
+    <p>
+      {{previewJobRequest.company}}
+    </p>
+
+    <h3>Job Title</h3>
+    <mat-divider></mat-divider>
+    <p>
+      {{previewJobRequest.jobTitle}}
+    </p>
+
+    <h3>Job Location</h3>
+    <mat-divider></mat-divider>
+    <p>
+      {{previewJobRequest.jobLocation}}
+    </p>
+
+    <h3>Choosen Job type</h3>
+    <mat-divider></mat-divider>
+    <p>
+      {{previewJobRequest.jobTypeLoc}}
+    </p>
+
+    <h3>What type of job is it?</h3>
+    <mat-divider></mat-divider>
+    <p>{{ previewJobRequest.jobType }}</p>
+    <h3>What is the salary for this job?</h3>
+    <mat-divider></mat-divider>
+    <p>
+      {{previewJobRequest.salaryRangeFrom}}$ To {{previewJobRequest.salaryRangeTo}}$
+    </p>
+    <h3>Which benefits does this job offer?</h3>
+    <mat-divider></mat-divider>
+    {{previewJobRequest.jobBenefit}}
+
+    <h3>Description?</h3>
+    <mat-divider></mat-divider>
+    <p [innerHTML]="previewJobRequest.description">
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="accent">Save</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</div>

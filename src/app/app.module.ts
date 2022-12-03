@@ -17,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 import { ErrorComponent } from './common/error/error.component';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,12 @@ import { ErrorComponent } from './common/error/error.component';
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
+    NgxSpinnerModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      timeOut: 3000, // 3 seconds
+      progressBar: true,
+    }),
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [

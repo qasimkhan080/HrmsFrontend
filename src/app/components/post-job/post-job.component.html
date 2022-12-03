@@ -5,34 +5,95 @@
       <mat-card-content>
         <mat-card-title>Post a Job</mat-card-title>
         <mat-horizontal-stepper [linear]="isLinear">
-          <mat-step [stepControl]="firstFormGroup">
-            <form [formGroup]="firstFormGroup">
-              <ng-template matStepLabel>Basic Info</ng-template>
-              <mat-form-field>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-              </mat-form-field>
-              <div>
-                <button mat-raised-button color="warn" matStepperNext>Next</button>
-              </div>
-            </form>
-          </mat-step>
-          <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>Detail</ng-template>
-              <mat-form-field>
-                <input matInput placeholder="Address" formControlName="secondCtrl" required>
-              </mat-form-field>
-              <div>
-                <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-                <button mat-raised-button color="warn" matStepperNext>Next</button>
-              </div>
-            </form>
+          <mat-step>
+            <ng-template matStepLabel>Getting Started</ng-template>
+            <mat-form-field appearance="outline">
+              <mat-label>Company</mat-label>
+              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="jobComposeRqst.company">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Job Title</mat-label>
+              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="jobComposeRqst.jobTitle">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Job Location</mat-label>
+              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="jobComposeRqst.jobLocation">
+            </mat-form-field>
+            <div>
+              <button mat-raised-button color="warn" matStepperNext>Next</button>
+            </div>
           </mat-step>
           <mat-step>
-            <ng-template matStepLabel>Done</ng-template>
-            You are now done.
+            <ng-template matStepLabel>Job Details</ng-template>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <mat-form-field appearance="outline">
+                <mat-label>Choose Job type</mat-label>
+                <mat-select [(ngModel)]="jobComposeRqst.jobTypeLoc">
+                  <mat-option value="onsite">On Site</mat-option>
+                  <mat-option value="remote">Remote</mat-option>
+                  <mat-option value="hybrid">Hybrid</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <label>
+                What type of job is it?<br />
+                <mat-button-toggle-group [value]="jobComposeRqst.jobType" aria-label="filter"
+                                         (change)="onChangeJobType($event)">
+                  <mat-button-toggle value="full">Full-time</mat-button-toggle>
+                  <mat-button-toggle value="part">Part-time</mat-button-toggle>
+                  <mat-button-toggle value="temp">Temporary</mat-button-toggle>
+                  <mat-button-toggle value="cont">Contract</mat-button-toggle>
+                  <mat-button-toggle value="itern">Internship</mat-button-toggle>
+                  <mat-button-toggle value="comm">Commission</mat-button-toggle>
+                </mat-button-toggle-group>
+              </label>
+            </div>
+            <br />
+            <label>
+              What is the salary for this job? (optional)
+            </label>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="16px">
+              <mat-form-field fxFlex="50" class="no-space-field" appearance="outline">
+                <mat-label>$</mat-label>
+                <input matInput class="align-left" [(ngModel)]="jobComposeRqst.salaryRangeFrom" placeholder="Example: 50,000.00">
+              </mat-form-field>
+              <p>To</p>
+              <mat-form-field fxFlex="50" class="no-space-field" appearance="outline">
+                <mat-label>$</mat-label>
+                <input matInput class="align-left" [(ngModel)]="jobComposeRqst.salaryRangeTo" placeholder="Example: 60,000.00">
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <label>
+                Which benefits does this job offer?<br />
+                <mat-button-toggle-group [value]="jobComposeRqst.jobBenefit" aria-label="filter"
+                                         (change)="onChangeJobBenefit($event)" multiple>
+                  <mat-button-toggle value="medical">Medical Insurance</mat-button-toggle>
+                  <mat-button-toggle value="dental">Dental Insurance</mat-button-toggle>
+                  <mat-button-toggle value="vision">Vision Insurance</mat-button-toggle>
+                  <mat-button-toggle value="life">Life Insurance</mat-button-toggle>
+                  <mat-button-toggle value="retire">Retirement Assistance</mat-button-toggle>
+                  <mat-button-toggle value="paid">Paid Vacation</mat-button-toggle>
+                </mat-button-toggle-group>
+              </label>
+            </div>
+            <br />
             <div>
               <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+              <button mat-raised-button color="warn" matStepperNext style="margin-left:20px">Next</button>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Job Description</ng-template>
+            <div class="mg-top">
+              <div class="custom-child-tab inner-pad-tab cbuilder-scoring-states">
+                <quill-editor id="qeTemplate" [modules]="quillJobDescTemplateConfig"
+                              [(ngModel)]="descriptionBody"
+                              (onContentChanged)="OnDescriptionContentChanged($event)"></quill-editor>
+              </div>
+              <br />
+              <button mat-raised-button color="accent" (click)="postJobPreview()">Preview</button>
             </div>
           </mat-step>
         </mat-horizontal-stepper>

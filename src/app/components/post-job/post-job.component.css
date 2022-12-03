@@ -1,0 +1,10 @@
+.mat-button-toggle-checked {
+  background: #1976d2;
+  color: white !important;
+}
+.mg-top{
+    margin-top:20px;
+}
+:host #qeTemplate /deep/ .ql-container {
+  height: 250px;
+}
