@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { PostJobPopupComponent } from '../../common/post-job-popup/post-job-popup.component';
+import { PostJobService } from '../post-job/post-job.service';
 
 @Component({
   selector: 'app-post-job',
@@ -25,9 +28,11 @@ export class PostJobComponent implements OnInit {
     ]
   };
 
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) {
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private postJobService: PostJobService,
+    private toastrService: ToastrService, private spinnerService: NgxSpinnerService) {
     this.jobComposeRqst.jobType = 'full';
-    this.jobComposeRqst.jobBenefit = 'medical';
+    this.jobComposeRqst.jobBenefit = [];
+    this.jobComposeRqst.jobBenefit.push('medical');
   }
 
   ngOnInit(): void {
@@ -43,7 +48,7 @@ export class PostJobComponent implements OnInit {
     this.jobComposeRqst.description = content.html;
   }
 
-  onChangeJobType($event:any) {
+  onChangeJobType($event: any) {
     this.jobComposeRqst.jobType = $event.value;
   }
 
@@ -53,14 +58,26 @@ export class PostJobComponent implements OnInit {
 
   postJobPreview() {
     this.jobComposeRqst.dialogueName = 'preview-post-job';
+    this.jobComposeRqst.previewFrom = 'post-job';
     const dialogRef = this.dialog.open(PostJobPopupComponent, {
       panelClass: 'modal-full', data: this.jobComposeRqst
     });
 
     dialogRef.afterClosed().subscribe(saveOk => {
       if (saveOk) {
-        //this.GetEmailNotificationList();
+        this.savePostJob();
       }
+    });
+  }
+
+  // Save post job
+  savePostJob() {
+    this.spinnerService.show();
+    this.postJobService.SavePostJob(this.jobComposeRqst).subscribe(data => {
+      if (data.status) {
+        this.toastrService.success("Posted jobs has been saved successfully.", 'Success');
+      }
+      this.spinnerService.hide();
     });
   }
 }

@@ -3,13 +3,15 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\common",
+    "\\src\\app\\common\\confirmation-popup",
     "\\src\\app\\components",
-    "\\src\\app\\components\\login",
     "\\src\\app\\components\\post-job",
     "\\src\\app\\layouts",
     "\\src\\app\\layouts\\full",
-    "\\src\\app\\layouts\\full\\header"
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\menu-items"
   ],
-  "SelectedNode": "\\src\\app\\components\\post-job\\post-job.component.ts",
+  "SelectedNode": "\\src\\app\\components\\show-job\\show-job.component.html",
   "PreviewInSolutionExplorer": false
 }

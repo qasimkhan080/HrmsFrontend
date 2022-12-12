@@ -1,0 +1,80 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <!-- Card column -->
+  <div fxFlex.gt-sm="100%" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Jobs Detail</mat-card-title>
+
+        <div class="card-block p-0">
+          <div class="row">
+            <div class="col-md-3">
+              <label>Company:</label>
+              <input [(ngModel)]="searchJobRqst.companyName" class="form-control" type="text" />
+            </div>
+            <div class="col-md-3">
+              <label>Job Title:</label>
+              <input [(ngModel)]="searchJobRqst.jobTitle" class="form-control" type="text" />
+            </div>
+            <div class="col-md-3">
+              <label>Job Location:</label>
+              <input [(ngModel)]="searchJobRqst.jobLocation" class="form-control" type="text" />
+            </div>
+            <div class="col-md-3">
+              <button style="margin-top:30px" (click)="getPostedJob()" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+          <div class="row" style="margin-top:50px">
+              <table class="table table-bordered table-sm m-0">
+                <thead class="">
+                  <tr>
+                    <th>#</th>
+                    <th>Company Name</th>
+                    <th>Job Title</th>
+                    <th>Job Location</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let job of postedJoblist | paginate:config_pgShowJob;let i = index;">
+                    <td>
+                      <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator">{{i+1}}</span>
+                      </label>
+                    </td>
+                    <td>{{job.company}}</td>
+                    <td>{{job.jobTitle}}</td>
+                    <td>{{job.jobLocation}}</td>
+                    <td>
+                      <button mat-icon-button aria-label="Edit">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </td>
+                    <td>
+                      <button mat-icon-button aria-label="Delete" (click)="deleteJobPopup(job)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                    <td>
+                      <button mat-icon-button aria-label="Detail" (click)="showDetailPopup(job)">
+                        <mat-icon>dehaze</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="no-data" *ngIf="postedJoblist?.length < 1">
+                    <td colspan="5">No data available in table</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <div class="full-width" fxLayout="row" fxLayoutAlign="end" style="margin-top:10px" *ngIf="postedJoblist?.length > 0">
+            <pagination-controls class="custom-pagination dialog-pagination" id="pg_showJob"
+                                 (pageChange)="onPageChanged($event)" directionLinks="false"></pagination-controls>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

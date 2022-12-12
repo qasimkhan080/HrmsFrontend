@@ -46,4 +46,8 @@ export class CommonService {
   public put(_url: string, param: any) {
     return this.httpclient.put<any>(_url, param);
   }
+
+  public EncryptTo64(model:any) {
+    return btoa(model);
+  }
 }
