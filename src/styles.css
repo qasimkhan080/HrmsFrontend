@@ -2,3 +2,53 @@
 .no-data {
   text-align: center;
 }
+
+/*very small*/
+.modal-very-small {
+  width: 300px;
+}
+
+/*extra small*/
+.modal-extra-small {
+  width: 430px;
+
+}
+
+.modal-small {
+  width: 653px;
+}
+
+.modal-medium {
+  width: 900px;
+}
+
+.modal-ml {
+  width: 1200px;
+}
+
+.modal-full {
+  width: 98%;
+}
+
+.modal-full-auto {
+  width: 98%;
+}
+
+.modal-cq {
+  width: 98%;
+  max-width: 96vw !important;
+}
+
+.modal-semifull {
+  width: 98%;
+  max-width: 96vw !important;
+}
+
+.modal-max {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+.cdk-global-scrollblock {
+  overflow-y: auto !important;
+}

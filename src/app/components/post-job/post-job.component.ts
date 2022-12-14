@@ -60,7 +60,7 @@ export class PostJobComponent implements OnInit {
     this.jobComposeRqst.dialogueName = 'preview-post-job';
     this.jobComposeRqst.previewFrom = 'post-job';
     const dialogRef = this.dialog.open(PostJobPopupComponent, {
-      panelClass: 'modal-full', data: this.jobComposeRqst
+      panelClass: 'modal-medium', data: this.jobComposeRqst
     });
 
     dialogRef.afterClosed().subscribe(saveOk => {

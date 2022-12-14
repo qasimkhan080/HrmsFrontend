@@ -27,6 +27,12 @@ export const AppRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'register-company',
+    component: FullComponent,
+    loadChildren: () => import('src/app/components/register-company/register-company.module').then(m => m.RegisterCompanyModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'error',
     component: ErrorComponent
   }

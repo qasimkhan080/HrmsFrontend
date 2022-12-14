@@ -13,4 +13,6 @@ export class ConstantsService {
   public readonly urlSavePostJob = environment.ApiUrl + '/api/PostJob/SavePostJob';
   public readonly urlGetPostedJob = environment.ApiUrl + '/api/PostJob/GetPostedJob';
   public readonly urlDeletePostedJob = environment.ApiUrl + '/api/PostJob/DeletePostedJob';
+  //Register Company Detail
+  public readonly urlRegisterCompanyDetail = environment.ApiUrl + '/api/CompanyRegistration/RegisterCompanyDetail';
 }

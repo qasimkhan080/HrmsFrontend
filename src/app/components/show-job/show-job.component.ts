@@ -23,7 +23,11 @@ export class ShowJobComponent implements OnInit {
   };
 
   constructor(public dialog: MatDialog, private showJobService: ShowJobService,
-    private toastrService: ToastrService,private spinnerService: NgxSpinnerService) { }
+    private toastrService: ToastrService, private spinnerService: NgxSpinnerService) {
+    this.searchJobRqst.companyName = '';
+    this.searchJobRqst.jobTitle = '';
+    this.searchJobRqst.jobLocation = '';
+  }
 
   ngOnInit(): void {
     this.getPostedJob();
@@ -34,7 +38,7 @@ export class ShowJobComponent implements OnInit {
       "companyName": this.searchJobRqst.companyName,
       "jobTitle": this.searchJobRqst.jobTitle,
       "jobLocation": this.searchJobRqst.jobLocation,
-      "pageIndex": this.config_pgShowJob.currentPage-1,
+      "pageIndex": this.config_pgShowJob.currentPage - 1,
       "pageSize": this.config_pgShowJob.itemsPerPage,
     };
     this.spinnerService.show();
@@ -48,7 +52,7 @@ export class ShowJobComponent implements OnInit {
   }
 
   //selected Page number record 
-  onPageChanged(page:any) {
+  onPageChanged(page: any) {
     // set selected page as a current page
     this.config_pgShowJob.currentPage = page;
     this.getPostedJob();
@@ -62,7 +66,7 @@ export class ShowJobComponent implements OnInit {
     });
   }
 
-  deleteJobPopup(job:any) {
+  deleteJobPopup(job: any) {
     job.dialogueName = 'delete-confirmation';
     const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
       panelClass: 'modal-full', data: job
@@ -75,7 +79,7 @@ export class ShowJobComponent implements OnInit {
     });
   }
 
-  deleteJobById(postJobId:any) {
+  deleteJobById(postJobId: any) {
     this.spinnerService.show();
     this.showJobService.DeletePostedJob(postJobId).subscribe(data => {
       if (data.status) {

@@ -1,0 +1,113 @@
+<div class="modal-content" *ngIf="previewCompanyRequest.dialogueName == 'preview-company-detail'">
+  <div class="container emp-profile">
+    <h2 mat-dialog-title>Company detail</h2>
+    <form method="post">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-img">
+            <img style="width:137px;height:91px" src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png" alt="" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="profile-head">
+            <h5>
+              Company Name: {{previewCompanyRequest.companyName}}
+            </h5>
+            <h6>
+              Owner: {{previewCompanyRequest.owner}}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="height:400px;overflow:auto">
+          <mat-tab-group>
+            <mat-tab label="Basic Detail">
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Industry</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewCompanyRequest.industry}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Street Address</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewCompanyRequest.streetAddress}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">City</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewCompanyRequest.city}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">State</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewCompanyRequest.state}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Country</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewCompanyRequest.country}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Zip Code</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewCompanyRequest.zipCode}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Email</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewCompanyRequest.emailAddress}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Phone Number</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewCompanyRequest.phoneNumber}}
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Description">
+              <p [innerHtml]="previewCompanyRequest.description"></p>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </form>
+    <mat-dialog-actions align="end">
+      <button mat-flat-button class="inline-btn default-btn" *ngIf="previewCompanyRequest.previewFrom=='register-company'"
+              color="primary" (click)="SaveOrCancel('save')">
+        Save
+      </button>
+      <button mat-stroked-button class="inline-btn default-btn" color="black" (click)="SaveOrCancel('no')" mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>
+  </div>
+</div>

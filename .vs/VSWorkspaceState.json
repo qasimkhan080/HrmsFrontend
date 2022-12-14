@@ -7,11 +7,10 @@
     "\\src\\app\\common\\confirmation-popup",
     "\\src\\app\\components",
     "\\src\\app\\components\\post-job",
-    "\\src\\app\\layouts",
+    "\\src\\app\\components\\register-company",
     "\\src\\app\\layouts\\full",
-    "\\src\\app\\shared",
     "\\src\\app\\shared\\menu-items"
   ],
-  "SelectedNode": "\\src\\app\\components\\show-job\\show-job.component.html",
+  "SelectedNode": "\\src\\app\\components\\register-company\\register-company.component.css",
   "PreviewInSolutionExplorer": false
 }

@@ -20,7 +20,6 @@ import { ErrorComponent } from './common/error/error.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
-
 @NgModule({
   declarations: [
     AppComponent,
