@@ -11,7 +11,7 @@ import { MatSnackBar, MatSnackBarModule, MatSnackBarConfig } from '@angular/mate
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  userName: string='';
+  userName: string ='';
   password: string = '';
 
   constructor(private commonService: CommonService,
