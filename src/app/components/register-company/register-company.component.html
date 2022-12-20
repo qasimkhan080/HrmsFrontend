@@ -92,7 +92,8 @@
             <ng-template matStepLabel>Company Description</ng-template>
             <div class="mg-top">
               <div class="custom-child-tab inner-pad-tab cbuilder-scoring-states">
-                <quill-editor id="qeTemplate" [modules]="quillCompanyDescTemplateConfig"></quill-editor>
+                <quill-editor id="qeTemplate" [modules]="quillCompanyDescTemplateConfig"
+                              (onContentChanged)="OnDescriptionContentChanged($event)"></quill-editor>
               </div>
               <br />
               <button mat-raised-button color="accent" (click)="companyDetailPreview()">Preview</button>

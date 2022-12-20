@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterCompanyService } from '../register-company/register-company.service';
@@ -28,7 +28,13 @@ export class RegisterCompanyComponent implements OnInit {
     ]
   };
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private registerCompanyService: RegisterCompanyService,
-    private toastrService: ToastrService, private spinnerService: NgxSpinnerService) { }
+    private toastrService: ToastrService, private spinnerService: NgxSpinnerService,
+    @Inject(MAT_DIALOG_DATA) public d: any, public dialogRef: MatDialogRef<any>) {
+    if (d && d.action == 'update')
+      this.companyRegisterRqst = d;
+    else
+      this.companyRegisterRqst.action = 'save';
+  }
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
@@ -61,5 +67,9 @@ export class RegisterCompanyComponent implements OnInit {
       }
       this.spinnerService.hide();
     });
+  }
+
+  OnDescriptionContentChanged(content: any) {
+    this.companyRegisterRqst.description = content.html;
   }
 }

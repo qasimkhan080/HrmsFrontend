@@ -95,12 +95,12 @@
         </div>
       </div>
     </form>
-    <mat-dialog-actions align="end">
+    <mat-card-actions>
       <button mat-flat-button class="inline-btn default-btn" *ngIf="previewJobRequest.previewFrom=='post-job'"
               color="primary" (click)="SaveOrCancel('save')">
         Save
       </button>
-      <button mat-stroked-button class="inline-btn default-btn" color="black"  (click)="SaveOrCancel('no')" mat-dialog-close>Cancel</button>
-    </mat-dialog-actions>
+      <button mat-stroked-button class="inline-btn default-btn" color="black" (click)="SaveOrCancel('no')" mat-dialog-close>Cancel</button>
+    </mat-card-actions>
   </div>
 </div>

@@ -1,0 +1,198 @@
+<div class="modal-content" *ngIf="model.dialogueName == 'add-employee'">
+  <div class="container emp-profile">
+    <!--<h2 mat-dialog-title>Add Employees</h2>-->
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Add Employees</mat-card-title>
+        <mat-horizontal-stepper [linear]="isLinear">
+          <mat-step>
+            <ng-template matStepLabel>Personal information</ng-template>
+            <mat-form-field appearance="outline">
+              <mat-label>Full Name*</mat-label>
+              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.fullName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Email*</mat-label>
+              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.email">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Gender</mat-label>
+              <mat-select [(ngModel)]="employeeRegisterRqst.gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Diverse">Diverse</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>HR information</ng-template>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-12">
+                <mat-form-field appearance="outline">
+                  <mat-label>Employment type*</mat-label>
+                  <mat-select [(ngModel)]="employeeRegisterRqst.employmentType">
+                    <mat-option value="Internal">Internal</mat-option>
+                    <mat-option value="External">External</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Position</mat-label>
+                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.position">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Team</mat-label>
+                  <mat-select [(ngModel)]="employeeRegisterRqst.team">
+                    <mat-option value="Controlling">Controlling</mat-option>
+                    <mat-option value="Management">Management</mat-option>
+                    <mat-option value="Customer Service">Customer Service</mat-option>
+                    <mat-option value="Marketing">Marketing</mat-option>
+                    <mat-option value="Sales">Sales</mat-option>
+                    <mat-option value="HR Management">HR Management</mat-option>
+                    <mat-option value="Accounting">Accounting</mat-option>
+                    <mat-option value="Development">Development</mat-option>
+                    <mat-option value="Recruiting">Recruiting</mat-option>
+                    <mat-option value="Customer Service IT">Customer Service IT</mat-option>
+                    <mat-option value="Product">Product</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Department</mat-label>
+                  <mat-select [(ngModel)]="employeeRegisterRqst.department">
+                    <mat-option value="Customer Service">Customer Service</mat-option>
+                    <mat-option value="Finance">Finance</mat-option>
+                    <mat-option value="HR">HR</mat-option>
+                    <mat-option value="IT">IT</mat-option>
+                    <mat-option value="Management">Management</mat-option>
+                    <mat-option value="Marketing and Sales">Marketing and Sales</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Office</mat-label>
+                  <mat-select [(ngModel)]="employeeRegisterRqst.office">
+                    <mat-option value="London">London</mat-option>
+                    <mat-option value="Remote">Remote</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Supervisor</mat-label>
+                  <mat-select [(ngModel)]="employeeRegisterRqst.supervisor">
+                    <mat-option value="Athar">Athar</mat-option>
+                    <mat-option value="Qasim">Qasim</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Hire date</mat-label>
+                  <input matInput [matDatepicker]="picker3" [value]="date.value"
+                         [(ngModel)]="employeeRegisterRqst.hireDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                  <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Probation Period</mat-label>
+                  <mat-select [(ngModel)]="employeeRegisterRqst.probationPeriod">
+                    <mat-option value="No Probation">No Probation</mat-option>
+                    <mat-option value="1 month">1 month</mat-option>
+                    <mat-option value="2 month">2 month</mat-option>
+                    <mat-option value="3 month">3 month</mat-option>
+                    <mat-option value="4 month">4 month</mat-option>
+                    <mat-option value="5 month">5 month</mat-option>
+                    <mat-option value="6 month">6 month</mat-option>
+                    <mat-option value="End of probation period">End of probation period</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Contract ends</mat-label>
+                  <input matInput [matDatepicker]="picker1" [value]="date.value"
+                         [(ngModel)]="employeeRegisterRqst.contractEnd">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>
+              Assign templates
+            </ng-template>
+            <div class="mg-top">
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Onboarding</mat-label>
+                    <mat-select [(ngModel)]="employeeRegisterRqst.onboarding">
+                      <mat-option value="Working students">Working students</mat-option>
+                      <mat-option value="Full-time employees">Full-time employees</mat-option>
+                      <mat-option value="Part-time employees">Part-time employees</mat-option>
+                      <mat-option value="Intern">Intern</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Working schedule</mat-label>
+                    <mat-select [(ngModel)]="employeeRegisterRqst.workingSchedule">
+                      <mat-option value="Freelancer - working hours on invoice">Freelancer - working hours on invoice</mat-option>
+                      <mat-option value="Full-time, 40 hours with time tracking, (mon,tue,wed,thu,fri)">Full-time, 40 hours with time tracking, (mon,tue,wed,thu,fri)"</mat-option>
+                      <mat-option value="Full-time, 40 hours without time tracking, (mon,tue,wed,thu,fri)">Full-time, 40 hours without time tracking, (mon,tue,wed,thu,fri)"</mat-option>
+                      <mat-option value="Part-time, 16 hours, (mon,tue)">Part-time, 16 hours, (mon,tue)</mat-option>
+                      <mat-option value="Part-time, 20 hours, (mo,tue,wed,thu)">Part-time, 20 hours, (mo,tue,wed,thu)</mat-option>
+                      <mat-option value="Part-time, 20 hours, (mon,tue,wed,thu,fri)">Part-time, 20 hours, (mon,tue,wed,thu,fri)"</mat-option>
+                      <mat-option value="Part-time, 30 hours, (mon,tue,wed,thu)">Part-time, 30 hours, (mon,tue,wed,thu)"</mat-option>
+                      <mat-option value="Working student, 20 hours, (semester)">Working student, 20 hours, (semester)</mat-option>
+                      <mat-option value="Working student, 40 hours, (semester break)">Working student, 40 hours, (semester break)</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+                <div class="col-md-12">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Paid vacation</mat-label>
+                    <mat-select [(ngModel)]="employeeRegisterRqst.paidVacation">
+                      <mat-option value="24 days">24 days</mat-option>
+                      <mat-option value="Working Students">Working Students</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <mat-card-actions>
+              <button mat-button (click)="SaveEmployee(false)" type="button">Close</button>
+              <div fxFlex></div>
+              <button mat-flat-button type="submit" (click)="SaveEmployee(true)" color="primary">Save</button>
+            </mat-card-actions>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { DemoMaterialModule } from '../../demo-material-module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,10 @@ import { QuillModule } from 'ngx-quill';
     FormsModule,
     ReactiveFormsModule,
     QuillModule.forRoot(),
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
   ]
 })
 export class PostJobModule { }

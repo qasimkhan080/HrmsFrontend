@@ -48,7 +48,7 @@
                     <td>{{job.jobTitle}}</td>
                     <td>{{job.jobLocation}}</td>
                     <td>
-                      <button mat-icon-button aria-label="Edit">
+                      <button mat-icon-button aria-label="Edit" (click)="editJobPopup(job,job.jobBenefit)">
                         <mat-icon>edit</mat-icon>
                       </button>
                     </td>

@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { PostJobPopupComponent } from '../../common/post-job-popup/post-job-popup.component';
 import { ConfirmationPopupComponent } from '../../common/confirmation-popup/confirmation-popup.component';
 import { ShowJobService } from '../show-job/show-job.service';
-
+import { PostJobComponent } from '../post-job/post-job.component';
 @Component({
   selector: 'app-show-job',
   templateUrl: './show-job.component.html',
@@ -62,14 +62,14 @@ export class ShowJobComponent implements OnInit {
     detail.previewFrom = 'show-job';
     detail.dialogueName = 'preview-post-job';
     this.dialog.open(PostJobPopupComponent, {
-      panelClass: 'modal-full', data: detail
+      panelClass: 'modal-medium', data: detail
     });
   }
 
   deleteJobPopup(job: any) {
     job.dialogueName = 'delete-confirmation';
     const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
-      panelClass: 'modal-full', data: job
+      panelClass: '', data: job
     });
 
     dialogRef.afterClosed().subscribe(ok => {
@@ -87,6 +87,55 @@ export class ShowJobComponent implements OnInit {
         this.getPostedJob();
       }
       this.spinnerService.hide();
+    });
+  }
+
+  editJobPopup(job: any, jobBenefit: any) {
+    let jobRequest: any = {
+      PostJobId: null,
+      jobAddedBy: null,
+      companyId: null,
+      company: 0,
+      jobTitle: null,
+      jobLocation: null,
+      jobTypeLoc: null,
+      jobType: null,
+      jobBenefit:[],
+      salaryRangeFrom: null,
+      salaryRangeTo: null,
+      description: null,
+      createdBy: null,
+      createdDate: null,
+      modifiedBy: null,
+      modifiedDate: null
+    };
+    let jobBenefits: any = {
+      PostJobBenefitId: null,
+      PostJobId: null,
+      BenefitId: null,
+      BenefitTitle: null,
+      CreatedBy: null,
+      CreatedDate: null,
+      ModifiedBy: null,
+      ModifiedDate: null
+    }
+    jobRequest = job ? JSON.parse(JSON.stringify(job)) : jobRequest;
+    jobBenefits = jobBenefit ? JSON.parse(JSON.stringify(jobBenefit)) : jobBenefits;
+    jobRequest.action = 'update';
+    if (!jobRequest.jobType) {
+      jobRequest.jobType = 'full';
+    }
+    jobRequest.jobBenefit = [];
+    if (!jobBenefits || jobBenefits.length == 0) {
+      jobRequest.jobBenefit.push('medical');
+    }
+    else {
+      for (let _benefit of jobBenefits) {
+        job.jobBenefit.push(_benefit.benefitTitle);
+      }
+    }
+    this.dialog.open(PostJobComponent, {
+      panelClass: '', data: job
     });
   }
 }

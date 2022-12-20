@@ -33,6 +33,18 @@ export const AppRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'show-company',
+    component: FullComponent,
+    loadChildren: () => import('src/app/components/show-company/show-company.module').then(m => m.ShowCompanyModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'employees',
+    component: FullComponent,
+    loadChildren: () => import('src/app/components/employees/employees.module').then(m => m.EmployeesModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'error',
     component: ErrorComponent
   }

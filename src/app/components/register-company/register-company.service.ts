@@ -14,6 +14,7 @@ export class RegisterCompanyService {
 
   RegisterCompanyDetail(companyRegisterRqst: any): Observable<any> {
     let model = {
+      "companyID": companyRegisterRqst.companyID,
       "companyName": companyRegisterRqst.companyName,
       "owner": companyRegisterRqst.owner,
       "industry": companyRegisterRqst.industry,
@@ -27,6 +28,7 @@ export class RegisterCompanyService {
       "description": companyRegisterRqst.description,
       "isDeleted": false,
       "createdBy": this.userContextService.user$._value.id,
+      "action": companyRegisterRqst.action
     };
     let url = this.Constants.urlRegisterCompanyDetail;
     return this.Common.post(url, model);

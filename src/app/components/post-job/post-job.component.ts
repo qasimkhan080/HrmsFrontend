@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { PostJobPopupComponent } from '../../common/post-job-popup/post-job-popup.component';
@@ -29,10 +29,18 @@ export class PostJobComponent implements OnInit {
   };
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private postJobService: PostJobService,
-    private toastrService: ToastrService, private spinnerService: NgxSpinnerService) {
-    this.jobComposeRqst.jobType = 'full';
-    this.jobComposeRqst.jobBenefit = [];
-    this.jobComposeRqst.jobBenefit.push('medical');
+    private toastrService: ToastrService, private spinnerService: NgxSpinnerService,
+    @Inject(MAT_DIALOG_DATA) public d: any, public dialogRef: MatDialogRef<any>) {
+    this.jobComposeRqst = {};
+    if (d && d.action == 'update') {
+      this.jobComposeRqst = d;      
+    }
+    else {
+      this.jobComposeRqst.action = 'save';
+      this.jobComposeRqst.jobType = 'full';
+      this.jobComposeRqst.jobBenefit = [];
+      this.jobComposeRqst.jobBenefit.push('medical');
+    }
   }
 
   ngOnInit(): void {

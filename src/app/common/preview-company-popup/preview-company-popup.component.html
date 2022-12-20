@@ -105,7 +105,7 @@
     <mat-dialog-actions align="end">
       <button mat-flat-button class="inline-btn default-btn" *ngIf="previewCompanyRequest.previewFrom=='register-company'"
               color="primary" (click)="SaveOrCancel('save')">
-        Save
+        {{previewCompanyRequest.action=='save'?'Save':'Update'}}
       </button>
       <button mat-stroked-button class="inline-btn default-btn" color="black" (click)="SaveOrCancel('no')" mat-dialog-close>Cancel</button>
     </mat-dialog-actions>

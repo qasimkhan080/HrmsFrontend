@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShowJobRoutingModule } from './show-job-routing.module';
-import { ShowJobComponent } from './show-job.component';
 import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from '../../demo-material-module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill';
-import { ConfirmationPopupComponent } from '../../../app/common/confirmation-popup/confirmation-popup.component';
+import { ShowCompanyRoutingModule } from './show-company-routing.module';
+import { ShowCompanyComponent } from './show-company.component';
 
 @NgModule({
   declarations: [
-    ShowJobComponent, ConfirmationPopupComponent
+    ShowCompanyComponent
   ],
   imports: [
     CommonModule,
-    ShowJobRoutingModule,
+    ShowCompanyRoutingModule,
     DemoMaterialModule,
     FlexLayoutModule,
     FormsModule,
@@ -23,4 +22,4 @@ import { ConfirmationPopupComponent } from '../../../app/common/confirmation-pop
     QuillModule.forRoot()
   ]
 })
-export class ShowJobModule { }
+export class ShowCompanyModule { }

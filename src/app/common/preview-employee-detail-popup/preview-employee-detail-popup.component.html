@@ -1,0 +1,135 @@
+<div class="modal-content" *ngIf="previewEmployeeRsp.dialogueName == 'preview-employee-detail'">
+  <div class="container emp-profile">
+    <h2 mat-dialog-title>Employee detail</h2>
+    <form method="post">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-img">
+            <img style="width:137px;height:91px" src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png" alt="" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="profile-head">
+            <h5>
+              Full Name: {{previewEmployeeRsp.fullName}}
+            </h5>
+            <h6>
+              Gender: {{previewEmployeeRsp.gender}}
+            </h6>
+            <h6>
+              Email: {{previewEmployeeRsp.email}}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="height:400px;overflow:auto">
+          <mat-tab-group>
+            <mat-tab label="HR information">
+              <div class="row">
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Employment type</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.employmentType}}
+                </div>
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Position</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.position}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Team</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.team}}
+                </div>
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Department</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.department}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Office</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.office}}
+                </div>
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Supervisor</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.supervisor}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Hire Date</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.hireDate}}
+                </div>
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Probation Period</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.probationPeriod}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-3 col-5">
+                  <label style="font-weight:bold;">Contract ends</label>
+                </div>
+                <div class="col-md-3 col-6">
+                  {{previewEmployeeRsp.contractEnd}}
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Assign templates">
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Onboarding</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewEmployeeRsp.onboarding}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Working schedule</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewEmployeeRsp.workingSchedule}}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Paid Vacation</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewEmployeeRsp.paidVacation}}
+                </div>
+              </div>
+              <hr />
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </form>
+    <mat-card-action align="end">
+      <button mat-stroked-button class="inline-btn default-btn" color="black" (click)="Cancel()" mat-dialog-close>Cancel</button>
+    </mat-card-action>
+  </div>
+</div>

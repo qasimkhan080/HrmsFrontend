@@ -4,13 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\common",
-    "\\src\\app\\common\\confirmation-popup",
     "\\src\\app\\components",
-    "\\src\\app\\components\\post-job",
-    "\\src\\app\\components\\register-company",
-    "\\src\\app\\layouts\\full",
-    "\\src\\app\\shared\\menu-items"
+    "\\src\\app\\components\\employees",
+    "\\src\\app\\components\\show-company"
   ],
-  "SelectedNode": "\\src\\app\\components\\register-company\\register-company.component.css",
+  "SelectedNode": "\\src\\app\\components\\employees\\employees.component.ts",
   "PreviewInSolutionExplorer": false
 }

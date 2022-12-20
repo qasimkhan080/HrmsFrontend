@@ -27,7 +27,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AppHeaderComponent,
     SpinnerComponent,
     AppSidebarComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
