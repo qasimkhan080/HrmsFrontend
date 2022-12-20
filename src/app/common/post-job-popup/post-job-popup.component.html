@@ -1,0 +1,106 @@
+<div class="modal-content" *ngIf="previewJobRequest.dialogueName == 'preview-post-job'">
+  <div class="container emp-profile">
+    <h2 mat-dialog-title>Job detail</h2>
+    <form method="post">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-img">
+            <img style="width:137px;height:91px" src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png" alt="" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="profile-head">
+            <h5>
+              Company Name: {{previewJobRequest.company}}
+            </h5>
+            <h6>
+              Job Title: {{previewJobRequest.jobTitle}}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-tab-group>
+            <mat-tab label="Basic Detail">
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Location</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{previewJobRequest.jobLocation}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Job Location Type</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  <p *ngIf="previewJobRequest.jobTypeLoc=='onsite'">On Site</p>
+                  <p *ngIf="previewJobRequest.jobTypeLoc=='remote'">Remote</p>
+                  <p *ngIf="previewJobRequest.jobTypeLoc=='hybrid'">Hybrid</p>
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Job Type</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  <p *ngIf="previewJobRequest.jobType=='full'">Full-time</p>
+                  <p *ngIf="previewJobRequest.jobType=='part'">Part-time</p>
+                  <p *ngIf="previewJobRequest.jobType=='temp'">Temporary</p>
+                  <p *ngIf="previewJobRequest.jobType=='cont'">Contract</p>
+                  <p *ngIf="previewJobRequest.jobType=='itern'">Internship</p>
+                  <p *ngIf="previewJobRequest.jobType=='comm'">Commission</p>
+                </div>
+              </div>
+              <hr />
+
+            </mat-tab>
+            <mat-tab label="Benefits">
+              <div class="row" *ngIf="previewJobRequest.salaryRangeFrom || previewJobRequest.salaryRangeTo">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Salary Range</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  ${{previewJobRequest.salaryRangeFrom}} to ${{previewJobRequest.salaryRangeTo}}
+                </div>
+              </div>
+              <hr />
+              <div class="row" *ngIf="previewJobRequest.jobBenefit && previewJobRequest.jobBenefit.length>0">
+                <div class="col-sm-3 col-md-4 col-5">
+                  <label style="font-weight:bold;">Job Benefit</label>
+                </div>
+                <div class="col-md-8 col-6">
+                  <div class="chip" *ngFor="let benefit of previewJobRequest.jobBenefit">
+                    <p *ngIf="benefit=='medical'">Medical Insurance</p>
+                    <p *ngIf="benefit=='dental'">Dental Insurance</p>
+                    <p *ngIf="benefit=='vision'">Vision Insurance</p>
+                    <p *ngIf="benefit=='life'">Life Insurance</p>
+                    <p *ngIf="benefit=='retire'">Retirement Assistance</p>
+                    <p *ngIf="benefit=='paid'">Paid Vacation</p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+            </mat-tab>
+            <mat-tab label="Description">
+              <p [innerHtml]="previewJobRequest.description"></p>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </form>
+    <mat-card-actions>
+      <button mat-flat-button class="inline-btn default-btn" *ngIf="previewJobRequest.previewFrom=='post-job'"
+              color="primary" (click)="SaveOrCancel('save')">
+        Save
+      </button>
+      <button mat-stroked-button class="inline-btn default-btn" color="black" (click)="SaveOrCancel('no')" mat-dialog-close>Cancel</button>
+    </mat-card-actions>
+  </div>
+</div>

@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { PostJobPopupComponent } from '../../common/post-job-popup/post-job-popup.component';
+import { PostJobService } from '../post-job/post-job.service';
 
 @Component({
   selector: 'app-post-job',
@@ -10,8 +15,33 @@ export class PostJobComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup = Object.create(null);
   secondFormGroup: FormGroup = Object.create(null);
+  jobComposeRqst: any = {};
+  descriptionBody: any;
+  quillJobDescTemplateConfig = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline'],
+      [{ 'color': [] }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['link'],
+      ['clean'],
+    ]
+  };
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private postJobService: PostJobService,
+    private toastrService: ToastrService, private spinnerService: NgxSpinnerService,
+    @Inject(MAT_DIALOG_DATA) public d: any, public dialogRef: MatDialogRef<any>) {
+    this.jobComposeRqst = {};
+    if (d && d.action == 'update') {
+      this.jobComposeRqst = d;      
+    }
+    else {
+      this.jobComposeRqst.action = 'save';
+      this.jobComposeRqst.jobType = 'full';
+      this.jobComposeRqst.jobBenefit = [];
+      this.jobComposeRqst.jobBenefit.push('medical');
+    }
+  }
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
@@ -22,4 +52,40 @@ export class PostJobComponent implements OnInit {
     });
   }
 
+  OnDescriptionContentChanged(content: any) {
+    this.jobComposeRqst.description = content.html;
+  }
+
+  onChangeJobType($event: any) {
+    this.jobComposeRqst.jobType = $event.value;
+  }
+
+  onChangeJobBenefit($event: any) {
+    this.jobComposeRqst.jobBenefit = $event.value;
+  }
+
+  postJobPreview() {
+    this.jobComposeRqst.dialogueName = 'preview-post-job';
+    this.jobComposeRqst.previewFrom = 'post-job';
+    const dialogRef = this.dialog.open(PostJobPopupComponent, {
+      panelClass: 'modal-medium', data: this.jobComposeRqst
+    });
+
+    dialogRef.afterClosed().subscribe(saveOk => {
+      if (saveOk) {
+        this.savePostJob();
+      }
+    });
+  }
+
+  // Save post job
+  savePostJob() {
+    this.spinnerService.show();
+    this.postJobService.SavePostJob(this.jobComposeRqst).subscribe(data => {
+      if (data.status) {
+        this.toastrService.success("Posted jobs has been saved successfully.", 'Success');
+      }
+      this.spinnerService.hide();
+    });
+  }
 }

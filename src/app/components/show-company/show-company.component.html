@@ -1,0 +1,84 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <!-- Card column -->
+  <div fxFlex.gt-sm="100%" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Company Detail</mat-card-title>
+
+        <div class="card-block p-0">
+          <div class="row">
+            <div class="col-md-3">
+              <label>Company Name:</label>
+              <input [(ngModel)]="searchCompanyRqst.companyName" class="form-control" type="text" />
+            </div>
+            <div class="col-md-3">
+              <label>Industry:</label>
+              <input [(ngModel)]="searchCompanyRqst.industry" class="form-control" type="text" />
+            </div>
+            <div class="col-md-3">
+              <label>Country:</label>
+              <input [(ngModel)]="searchCompanyRqst.country" class="form-control" type="text" />
+            </div>
+            <div class="col-md-3">
+              <label>City:</label>
+              <input [(ngModel)]="searchCompanyRqst.city" class="form-control" type="text" />
+            </div>
+            <div class="col-md-3">
+              <button style="margin-top:30px" (click)="getCompanyDetail()" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+          <div class="row" style="margin-top:50px">
+            <table class="table table-bordered table-sm m-0">
+              <thead class="">
+                <tr>
+                  <th>#</th>
+                  <th>Company Name</th>
+                  <th>Owner</th>
+                  <th>Industry</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let comp of postedCompanylist | paginate:config_pgShowCompany;let i = index;">
+                  <td>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input">
+                      <span class="custom-control-indicator">{{i+1}}</span>
+                    </label>
+                  </td>
+                  <td>{{comp.companyName}}</td>
+                  <td>{{comp.owner}}</td>
+                  <td>{{comp.industry}}</td>
+                  <td>
+                    <button mat-icon-button aria-label="Edit" (click)="editCompanyPopup(comp)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </td>
+                  <td>
+                    <button mat-icon-button aria-label="Delete" (click)="deleteCompanyPopup(comp)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                  <td>
+                    <button mat-icon-button aria-label="Detail" (click)="showCompanyPopup(comp)">
+                      <mat-icon>dehaze</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="no-data" *ngIf="postedCompanylist?.length < 1">
+                  <td colspan="5">No data available in table</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="full-width" fxLayout="row" fxLayoutAlign="end" style="margin-top:10px" *ngIf="postedCompanylist?.length > 0">
+            <pagination-controls class="custom-pagination dialog-pagination" id="pg_showCompany"
+                                 (pageChange)="onPageChanged($event)" directionLinks="false"></pagination-controls>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

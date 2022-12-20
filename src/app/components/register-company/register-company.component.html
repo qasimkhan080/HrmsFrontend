@@ -1,0 +1,106 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <!-- Card column -->
+  <div fxFlex.gt-sm="100%" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Company Registration</mat-card-title>
+        <mat-horizontal-stepper [linear]="isLinear">
+          <mat-step>
+            <ng-template matStepLabel>Getting Started</ng-template>
+            <mat-form-field appearance="outline">
+              <mat-label>Company Name</mat-label>
+              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.companyName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Owner</mat-label>
+              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.owner">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Industry</mat-label>
+              <mat-select [(ngModel)]="companyRegisterRqst.industry">
+                <mat-option value="IT">IT</mat-option>
+                <mat-option value="Education">Education</mat-option>
+                <mat-option value="Construction">Construction</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <button mat-raised-button color="warn" matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Company mailing Detail</ng-template>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-12">
+                <mat-form-field appearance="outline">
+                  <mat-label>Street Address</mat-label>
+                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.streetAddress">
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>City</mat-label>
+                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.city">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>State</mat-label>
+                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.state">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Country</mat-label>
+                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.country">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Zip Code</mat-label>
+                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.zipCode">
+                </mat-form-field>
+              </div>
+            </div>
+
+
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.emailAddress">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone number</mat-label>
+                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.phoneNumber">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+              <button mat-raised-button color="warn" matStepperNext style="margin-left:20px">Next</button>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Company Description</ng-template>
+            <div class="mg-top">
+              <div class="custom-child-tab inner-pad-tab cbuilder-scoring-states">
+                <quill-editor id="qeTemplate" [modules]="quillCompanyDescTemplateConfig"
+                              (onContentChanged)="OnDescriptionContentChanged($event)"></quill-editor>
+              </div>
+              <br />
+              <button mat-raised-button color="accent" (click)="companyDetailPreview()">Preview</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

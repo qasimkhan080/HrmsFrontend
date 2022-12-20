@@ -8,7 +8,7 @@ const defaultUser = null;
   providedIn: 'root',
 })
 export class UserContextService {
-  public user$ = new BehaviorSubject(defaultUser);
+  public user$:any = new BehaviorSubject(defaultUser);
 
   constructor(private sessionService: SessionService) {
     var data = this.sessionService.getItem("currentUser");

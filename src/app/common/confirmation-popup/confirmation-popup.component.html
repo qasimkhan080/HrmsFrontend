@@ -1,0 +1,13 @@
+<div class="modal-content" *ngIf="model.dialogueName == 'delete-confirmation'">
+  <div class="container emp-profile">
+    <h2 mat-dialog-title>Job detail</h2>
+    <p>Are you sure, you want to delete?</p>
+    <mat-dialog-actions align="end">
+      <button mat-flat-button class="inline-btn default-btn" (click)="confirmed('yes')"
+              color="primary">
+        Yes
+      </button>
+      <button mat-stroked-button class="inline-btn default-btn" color="black" (click)="confirmed('no')">No</button>
+    </mat-dialog-actions>
+  </div>
+</div>

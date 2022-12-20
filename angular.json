@@ -29,7 +29,9 @@
             "styles": [
               "node_modules/chartist/dist/chartist.css",
               "src/styles.css",
-              "src/assets/styles/style.scss"
+              "src/assets/styles/style.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": [],
             "vendorChunk": true,
