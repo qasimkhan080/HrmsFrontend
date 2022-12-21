@@ -2,12 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\common",
     "\\src\\app\\components",
-    "\\src\\app\\components\\employees",
-    "\\src\\app\\components\\show-company"
+    "\\src\\app\\components\\login",
+    "\\src\\app\\components\\post-job",
+    "\\src\\app\\layouts",
+    "\\src\\app\\layouts\\full",
+    "\\src\\app\\layouts\\full\\header"
   ],
-  "SelectedNode": "\\src\\app\\components\\employees\\employees.component.ts",
   "PreviewInSolutionExplorer": false
 }

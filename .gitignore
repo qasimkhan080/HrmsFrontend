@@ -40,3 +40,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/.vs/angular-admin/FileContentIndex/36fdcdc7-d260-4538-a668-798544e2c14e.vsidx
+/.vs/angular-admin/FileContentIndex/read.lock
+/.vs/angular-admin/FileContentIndex
