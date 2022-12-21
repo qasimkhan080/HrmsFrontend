@@ -107,7 +107,8 @@ export class ShowJobComponent implements OnInit {
       createdBy: null,
       createdDate: null,
       modifiedBy: null,
-      modifiedDate: null
+      modifiedDate: null,
+      action: null
     };
     let jobBenefits: any = {
       PostJobBenefitId: null,
@@ -131,11 +132,14 @@ export class ShowJobComponent implements OnInit {
     }
     else {
       for (let _benefit of jobBenefits) {
-        job.jobBenefit.push(_benefit.benefitTitle);
+        jobRequest.jobBenefit.push(_benefit.benefitTitle);
       }
     }
-    this.dialog.open(PostJobComponent, {
-      panelClass: '', data: job
+    const dialogRef = this.dialog.open(PostJobComponent, {
+      panelClass: '', data: jobRequest
+    });
+    dialogRef.afterClosed().subscribe(saveOk => {
+      this.getPostedJob();
     });
   }
 }

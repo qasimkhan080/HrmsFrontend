@@ -13,10 +13,18 @@ export class AddEmployeesComponent implements OnInit {
   firstFormGroup: FormGroup = Object.create(null);
   secondFormGroup: FormGroup = Object.create(null);
   employeeRegisterRqst: any = {};
-  date = new FormControl(new Date());
-  serializedDate = new FormControl(new Date().toISOString());
   constructor(@Inject(MAT_DIALOG_DATA) public d: any, public dialog: MatDialog, public dialogRef: MatDialogRef<any>) {
     this.model = d;
+    if (this.model.action == 'update') {
+      this.employeeRegisterRqst = this.model.employeeObject;
+      this.employeeRegisterRqst.hireDate = new Date(this.employeeRegisterRqst.hireDate.slice(0,-2));
+      this.employeeRegisterRqst.contractEnd = new Date(this.employeeRegisterRqst.contractEnd.slice(0, -2));
+    }
+    else {
+      this.employeeRegisterRqst.hireDate = new Date();
+      this.employeeRegisterRqst.contractEnd = new Date();
+    }
+    this.employeeRegisterRqst.action = this.model.action;
   }
 
   ngOnInit(): void {

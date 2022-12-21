@@ -1,9 +1,8 @@
 <div class="modal-content" *ngIf="model.dialogueName == 'add-employee'">
   <div class="container emp-profile">
-    <!--<h2 mat-dialog-title>Add Employees</h2>-->
     <mat-card>
       <mat-card-content>
-        <mat-card-title>Add Employees</mat-card-title>
+        <mat-card-title>{{model.heading}}</mat-card-title>
         <mat-horizontal-stepper [linear]="isLinear">
           <mat-step>
             <ng-template matStepLabel>Personal information</ng-template>
@@ -102,7 +101,7 @@
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>Hire date</mat-label>
-                  <input matInput [matDatepicker]="picker3" [value]="date.value"
+                  <input matInput [matDatepicker]="picker3" [value]="employeeRegisterRqst.hireDate"
                          [(ngModel)]="employeeRegisterRqst.hireDate">
                   <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
                   <mat-datepicker #picker3></mat-datepicker>
@@ -129,7 +128,7 @@
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>Contract ends</mat-label>
-                  <input matInput [matDatepicker]="picker1" [value]="date.value"
+                  <input matInput [matDatepicker]="picker1" [value]="employeeRegisterRqst.contractEnd"
                          [(ngModel)]="employeeRegisterRqst.contractEnd">
                   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
@@ -147,7 +146,7 @@
                 <div class="col-md-6">
                   <mat-form-field appearance="outline">
                     <mat-label>Onboarding</mat-label>
-                    <mat-select [(ngModel)]="employeeRegisterRqst.onboarding">
+                    <mat-select [(ngModel)]="employeeRegisterRqst.onBoarding">
                       <mat-option value="Working students">Working students</mat-option>
                       <mat-option value="Full-time employees">Full-time employees</mat-option>
                       <mat-option value="Part-time employees">Part-time employees</mat-option>
@@ -186,7 +185,6 @@
             </div>
 
             <mat-card-actions>
-              <button mat-button (click)="SaveEmployee(false)" type="button">Close</button>
               <div fxFlex></div>
               <button mat-flat-button type="submit" (click)="SaveEmployee(true)" color="primary">Save</button>
             </mat-card-actions>
@@ -194,5 +192,6 @@
         </mat-horizontal-stepper>
       </mat-card-content>
     </mat-card>
+    <button mat-button (click)="SaveEmployee(false)" type="button">Close</button>
   </div>
 </div>

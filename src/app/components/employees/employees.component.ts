@@ -35,9 +35,12 @@ export class EmployeesComponent implements OnInit {
     this.getEmployeeList();
   }
 
-  openAddEmployeesPopup() {
+  openAddEmployeesPopup(action: any = 'save', employeeObject: any=null) {    
     let model = {
-      dialogueName: 'add-employee'
+      heading: action == 'save' ? 'Add Employees' : 'Edit Employees',
+      dialogueName: 'add-employee',
+      action: action,
+      employeeObject: employeeObject
     }
     const dialogRef = this.dialog.open(AddEmployeesComponent, {
       panelClass: 'modal-medium', data: model
@@ -54,6 +57,7 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.SaveEmployee(employeeObj).subscribe(data => {
       if (data.status) {
         this.toastrService.success("Employee detail has been saved successfully.", 'Success');
+        this.getEmployeeList();
       }
       this.spinnerService.hide();
     });
@@ -78,15 +82,15 @@ export class EmployeesComponent implements OnInit {
     });
   }
 
-  deleteCompanyPopup(company: any) {
-    company.dialogueName = 'delete-confirmation';
+  deleteCompanyPopup(employee: any) {
+    employee.dialogueName = 'delete-confirmation';
     const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
-      panelClass: '', data: company
+      panelClass: '', data: employee
     });
 
     dialogRef.afterClosed().subscribe(ok => {
       if (ok) {
-        this.deleteCompanyById(company.companyID);
+        this.deleteCompanyById(employee.employeeID);
       }
     });
   }
