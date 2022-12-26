@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterCompanyService } from '../register-company/register-company.service';
 import { PreviewCompanyPopupComponent } from '../../common/preview-company-popup/preview-company-popup.component';
+import { CommonService } from '../../services/common.service';
 
 @Component({
   selector: 'app-register-company',
@@ -28,7 +29,7 @@ export class RegisterCompanyComponent implements OnInit {
     ]
   };
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private registerCompanyService: RegisterCompanyService,
-    private toastrService: ToastrService, private spinnerService: NgxSpinnerService,
+    private toastrService: ToastrService, private spinnerService: NgxSpinnerService, private Common: CommonService,
     @Inject(MAT_DIALOG_DATA) public d: any, public dialogRef: MatDialogRef<any>) {
     if (d && d.action == 'update')
       this.companyRegisterRqst = d;
@@ -54,8 +55,18 @@ export class RegisterCompanyComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(saveOk => {
       if (saveOk) {
+        this.registerUsers();
+      }
+    });
+  }
+
+  registerUsers() {
+    this.spinnerService.show();
+    this.registerCompanyService.registerUsers(this.companyRegisterRqst).subscribe(data => {
+      if (data.status) {
         this.saveCompanyDetail();
       }
+      this.spinnerService.hide();
     });
   }
 

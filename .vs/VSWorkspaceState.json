@@ -3,11 +3,15 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\common",
     "\\src\\app\\components",
-    "\\src\\app\\components\\employees",
-    "\\src\\app\\components\\show-company"
+    "\\src\\app\\components\\login",
+    "\\src\\app\\layouts",
+    "\\src\\app\\layouts\\full",
+    "\\src\\app\\layouts\\full\\sidebar",
+    "\\src\\app\\services",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\menu-items"
   ],
-  "SelectedNode": "\\src\\app\\components\\employees\\employees.component.ts",
+  "SelectedNode": "\\src\\app\\components\\login\\login.component.ts",
   "PreviewInSolutionExplorer": false
 }
