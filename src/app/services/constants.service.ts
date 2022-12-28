@@ -9,6 +9,7 @@ export class ConstantsService {
   constructor() { }
   // Login API URLs
   public readonly urlLogin = environment.ApiUrl + '/api/ApplicationUsers/Login';
+  public readonly urlRegisterCompany = environment.ApiUrl + '/api/ApplicationUsers/RegisterCompany';
   // Post Job URLs
   public readonly urlSavePostJob = environment.ApiUrl + '/api/PostJob/SavePostJob';
   public readonly urlGetPostedJob = environment.ApiUrl + '/api/PostJob/GetPostedJob';

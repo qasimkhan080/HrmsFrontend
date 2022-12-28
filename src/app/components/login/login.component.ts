@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       this.spinnerService.hide();
       let userData: any = data;
       if (userData && userData.status) {
+        userData.user.userRole = userData.userRole;
         this.userContextService.setUser(userData.user);
         this.routeStateService.add("Dashboard", '/dashboard', null, true);
         return;

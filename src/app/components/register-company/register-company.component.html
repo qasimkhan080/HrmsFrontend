@@ -9,11 +9,11 @@
             <ng-template matStepLabel>Getting Started</ng-template>
             <mat-form-field appearance="outline">
               <mat-label>Company Name</mat-label>
-              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.companyName">
+              <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.companyName">
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Owner</mat-label>
-              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.owner">
+              <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.owner">
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Industry</mat-label>
@@ -33,7 +33,7 @@
               <div class="col-md-12">
                 <mat-form-field appearance="outline">
                   <mat-label>Street Address</mat-label>
-                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.streetAddress">
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.streetAddress">
                 </mat-form-field>
               </div>
             </div>
@@ -41,13 +41,13 @@
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>City</mat-label>
-                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.city">
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.city">
                 </mat-form-field>
               </div>
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>State</mat-label>
-                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.state">
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.state">
                 </mat-form-field>
               </div>
             </div>
@@ -56,29 +56,43 @@
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>Country</mat-label>
-                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.country">
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.country">
                 </mat-form-field>
               </div>
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>Zip Code</mat-label>
-                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.zipCode">
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.zipCode">
                 </mat-form-field>
               </div>
             </div>
-
 
             <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>Email</mat-label>
-                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.emailAddress">
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.emailAddress">
                 </mat-form-field>
               </div>
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>Phone number</mat-label>
-                  <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.phoneNumber">
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.phoneNumber">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>User Name</mat-label>
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.userName">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.password">
                 </mat-form-field>
               </div>
             </div>

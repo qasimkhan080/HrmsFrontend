@@ -33,4 +33,16 @@ export class RegisterCompanyService {
     let url = this.Constants.urlRegisterCompanyDetail;
     return this.Common.post(url, model);
   }
+
+  registerUsers(companyRegisterRqst: any): Observable<any> {
+    let model = {
+      "Email": companyRegisterRqst.emailAddress,
+      "Username": companyRegisterRqst.userName,
+      "Password": companyRegisterRqst.password
+    };
+    let modelString = JSON.stringify(model);
+    let encodedModel = this.Common.EncryptTo64(modelString);
+    let url = this.Constants.urlRegisterCompany + "/" + encodedModel;
+    return this.Common.get(url);
+  }
 }
