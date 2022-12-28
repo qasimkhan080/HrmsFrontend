@@ -95,8 +95,11 @@ export class ShowCompanyComponent implements OnInit {
 
   editCompanyPopup(companyObj: any) {
     companyObj.action = 'update';
-    this.dialog.open(RegisterCompanyComponent, {
+    const dialogRef = this.dialog.open(RegisterCompanyComponent, {
       panelClass: '', data: companyObj
+    });
+    dialogRef.afterClosed().subscribe(saveOk => {
+      this.getCompanyDetail();
     });
   }
 }

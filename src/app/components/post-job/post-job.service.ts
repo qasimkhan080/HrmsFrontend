@@ -14,6 +14,7 @@ export class PostJobService {
 
   SavePostJob(jobComposeRqstModel:any): Observable<any> {
     let model = {
+      "PostJobId": jobComposeRqstModel.postJobId,
       "jobAddedBy": 'Admin',
       "companyId": 0,
       "companyName": jobComposeRqstModel.company,
@@ -27,6 +28,7 @@ export class PostJobService {
       "jobDescription": jobComposeRqstModel.description,
       "isDeleted": false,
       "createdBy": this.userContextService.user$._value.id,
+      "action": jobComposeRqstModel.action
     };
     let url = this.Constants.urlSavePostJob;
     return this.Common.post(url, model);

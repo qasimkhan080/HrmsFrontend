@@ -5,7 +5,7 @@
       <mat-card-content>
         <mat-card-title>
           Employee
-          <button mat-icon-button aria-label="Add" (click)="openAddEmployeesPopup()">
+          <button mat-icon-button aria-label="Add" (click)="openAddEmployeesPopup('save','')">
             <mat-icon>group_add</mat-icon>
           </button>
         </mat-card-title>
@@ -57,12 +57,12 @@
                   <td>{{emp.email}}</td>
                   <td>{{emp.employmentType}}</td>
                   <td>
-                    <button mat-icon-button aria-label="Edit">
+                    <button mat-icon-button aria-label="Edit" (click)="openAddEmployeesPopup('update',emp)">
                       <mat-icon>edit</mat-icon>
                     </button>
                   </td>
                   <td>
-                    <button mat-icon-button aria-label="Delete" (click)="deleteCompanyById(emp.employeeID)">
+                    <button mat-icon-button aria-label="Delete" (click)="deleteCompanyPopup(emp)">
                       <mat-icon>delete</mat-icon>
                     </button>
                   </td>
