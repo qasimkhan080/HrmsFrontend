@@ -24,6 +24,7 @@ export class ConstantsService {
   public readonly urlDeleteCompanyDetail = environment.ApiUrl + '/api/CompanyRegistration/DeleteCompanyDetail';
   public readonly urlOnChangeCompanyStatus = environment.ApiUrl + '/api/CompanyRegistration/OnChangeCompanyStatus';
   public readonly urlChangeUserInfoStatus = environment.ApiUrl + '/api/ApplicationUsers/ChangeUserInfoStatus';
+  public readonly urlGetCompaniesName = environment.ApiUrl + '/api/CompanyRegistration/GetCompaniesName';
   //Employees Module URLs
   public readonly urlSaveEmployee = environment.ApiUrl + '/api/Employee/SaveEmployee';
   public readonly urlGetEmployeeList = environment.ApiUrl + '/api/Employee/GetEmployeeList';
@@ -31,4 +32,5 @@ export class ConstantsService {
   public readonly urlOnChangeEmployeeStatus = environment.ApiUrl + '/api/Employee/OnChangeEmployeeStatus';
   //Dashboard Module URLs
   public readonly urlGetAdminDashboardData = environment.ApiUrl + '/api/Dashboard/GetAdminDashboardData';
+  public readonly urlGetCompanyDashboardData = environment.ApiUrl + '/api/Dashboard/GetCompanyDashboardData';
 }

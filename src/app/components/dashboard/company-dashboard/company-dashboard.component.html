@@ -1,1 +1,83 @@
-<p>company-dashboard works!</p>
+<div fxlayout="row wrap" style="flex-flow: row wrap; box-sizing: border-box; display: flex;">
+  <div fxflex.gt-sm="25" fxflex.gt-xs="100" fxflex="100" style="flex: 1 1 25%; box-sizing: border-box; max-width: 40%;">
+    <mat-card class="mat-card mat-focus-indicator">
+      <mat-card-content class="mat-card-content">
+        <div class="d-flex no-block">
+          <div class="m-r-10 no-shrink">
+            <button class="mat-focus-indicator shadow-none bg-inverse bg-success mat-fab mat-button-base mat-accent">
+              <span class="mat-button-wrapper">
+                <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+              </span><span class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span class="mat-button-focus-overlay"></span>
+            </button>
+          </div>
+          <div>
+            <h3 class="m-0">{{totalEmployeesCount}}</h3>
+            <h6 class="text-muted m-0">Total Employees</h6>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <div fxflex.gt-sm="25" fxflex.gt-xs="100" fxflex="100" style="flex: 1 1 25%; box-sizing: border-box; max-width: 40%;">
+    <mat-card class="mat-card mat-focus-indicator">
+      <mat-card-content class="mat-card-content">
+        <div class="d-flex no-block">
+          <div class="m-r-10 no-shrink">
+            <button class="mat-focus-indicator shadow-none bg-inverse bg-success mat-fab mat-button-base mat-accent">
+              <span class="mat-button-wrapper">
+                <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+              </span><span class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span class="mat-button-focus-overlay"></span>
+            </button>
+          </div>
+          <div>
+            <h3 class="m-0">{{totalActiveEmployeesCount}}</h3>
+            <h6 class="text-muted m-0">Total Active Employees</h6>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxflex.gt-sm="25" fxflex.gt-xs="100" fxflex="100" style="flex: 1 1 25%; box-sizing: border-box; max-width: 40%;">
+    <mat-card class="mat-card mat-focus-indicator">
+      <mat-card-content class="mat-card-content">
+        <div class="d-flex no-block">
+          <div class="m-r-10 no-shrink">
+            <button class="mat-focus-indicator shadow-none bg-inverse bg-success mat-fab mat-button-base mat-accent">
+              <span class="mat-button-wrapper">
+                <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+              </span><span class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span class="mat-button-focus-overlay"></span>
+            </button>
+          </div>
+          <div>
+            <h3 class="m-0">{{totalInActiveEmployeesCount}}</h3>
+            <h6 class="text-muted m-0">Total In-Active Employees</h6>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxflex.gt-sm="25" fxflex.gt-xs="100" fxflex="100" style="flex: 1 1 25%; box-sizing: border-box; max-width: 40%;">
+    <mat-card class="mat-card mat-focus-indicator">
+      <mat-card-content class="mat-card-content">
+        <div class="d-flex no-block">
+          <div class="m-r-10 no-shrink">
+            <button class="mat-focus-indicator shadow-none bg-inverse bg-success mat-fab mat-button-base mat-accent">
+              <span class="mat-button-wrapper">
+                <mat-icon role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">account_circle</mat-icon>
+              </span><span class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span class="mat-button-focus-overlay"></span>
+            </button>
+          </div>
+          <div>
+            <h3 class="m-0">{{totalJobCount}}</h3>
+            <h6 class="text-muted m-0">Total Posted Jobs</h6>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
