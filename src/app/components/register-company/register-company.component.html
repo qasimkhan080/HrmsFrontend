@@ -82,7 +82,8 @@
               </div>
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="space-between center" class="mg-top">
+            <div fxLayout="row" fxLayoutAlign="space-between center"
+                 *ngIf="companyRegisterRqst.action=='save'" class="mg-top">
               <div class="col-md-6">
                 <mat-form-field appearance="outline">
                   <mat-label>User Name</mat-label>

@@ -55,7 +55,10 @@ export class RegisterCompanyComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(saveOk => {
       if (saveOk) {
-        this.registerUsers();
+        if (this.companyRegisterRqst.action == 'save')
+          this.registerUsers();
+        else
+          this.saveCompanyDetail();
       }
     });
   }
@@ -63,10 +66,10 @@ export class RegisterCompanyComponent implements OnInit {
   registerUsers() {
     this.spinnerService.show();
     this.registerCompanyService.registerUsers(this.companyRegisterRqst).subscribe(data => {
+      this.spinnerService.hide();
       if (data.status) {
         this.saveCompanyDetail();
       }
-      this.spinnerService.hide();
     });
   }
 

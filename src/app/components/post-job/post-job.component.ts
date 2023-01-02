@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { PostJobPopupComponent } from '../../common/post-job-popup/post-job-popup.component';
+import { UserContextService } from '../../services/user-context.service';
 import { PostJobService } from '../post-job/post-job.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class PostJobComponent implements OnInit {
   secondFormGroup: FormGroup = Object.create(null);
   jobComposeRqst: any = {};
   descriptionBody: any;
+  userRole: any = '';
   quillJobDescTemplateConfig = {
     toolbar: [
       [{ 'header': [1, 2, 3, false] }],
@@ -30,14 +32,18 @@ export class PostJobComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private postJobService: PostJobService,
     private toastrService: ToastrService, private spinnerService: NgxSpinnerService,
-    @Inject(MAT_DIALOG_DATA) public d: any, public dialogRef: MatDialogRef<any>) {
+    @Inject(MAT_DIALOG_DATA) public d: any, public dialogRef: MatDialogRef<any>,
+    private userContextService: UserContextService  ) {
     this.jobComposeRqst = {};
+    this.userRole = this.userContextService.user$._value.userRole.toLowerCase();
     if (d && d.action == 'update') {
       this.jobComposeRqst = d;      
     }
     else {
       this.jobComposeRqst.action = 'save';
       this.jobComposeRqst.jobType = 'full';
+      this.jobComposeRqst.company = this.userContextService.user$._value.companyName;
+      this.jobComposeRqst.companyID = this.userContextService.user$._value.companyID;
       this.jobComposeRqst.jobBenefit = [];
       this.jobComposeRqst.jobBenefit.push('medical');
     }

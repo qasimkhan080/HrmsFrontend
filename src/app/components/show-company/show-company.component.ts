@@ -16,6 +16,7 @@ export class ShowCompanyComponent implements OnInit {
   searchCompanyRqst: any = {};
   postedCompanylist: any = [];
   SelectedPageSize: number = 10;
+  userInfo: any = {};
   config_pgShowCompany = {
     id: "pg_showCompany",
     itemsPerPage: 10,
@@ -77,8 +78,18 @@ export class ShowCompanyComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(ok => {
       if (ok) {
-        this.deleteCompanyById(company.companyID);
+        this.deleteUserById(company.userID,company.companyID);
       }
+    });
+  }
+
+  deleteUserById(userID: any, companyID:any) {
+    this.spinnerService.show();
+    this.showCompanyService.deleteUserById(userID).subscribe(data => {
+      if (data.status) {
+        this.deleteCompanyById(companyID);
+      }
+      this.spinnerService.hide();
     });
   }
 
@@ -100,6 +111,58 @@ export class ShowCompanyComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(saveOk => {
       this.getCompanyDetail();
+    });
+  }
+
+  showUserInfo(userID: any) {
+    this.spinnerService.show();
+    this.showCompanyService.showUserInfo(userID).subscribe(data => {
+      if (data.status) {
+        this.userInfo.email = data.email;
+        this.userInfo.userName = data.userName;
+      }
+      this.spinnerService.hide();
+    });
+  }
+
+  UpdateCompanyRegisteration(userID: any) {
+    this.spinnerService.show();
+    let model = {
+      id: userID,
+      userName: this.userInfo.userName,
+      password: this.userInfo.password,
+      email: this.userInfo.email
+    }
+    this.showCompanyService.UpdateCompanyRegisteration(model).subscribe(data => {
+      if (data.status) {
+        this.toastrService.success("Company registration has been updated.");
+        this.showUserInfo(userID);
+      }
+      this.spinnerService.hide();
+    });
+  }
+
+  OnChangeCompanyStatus(event: any, companyID: any, userID:any) {
+    this.spinnerService.show();
+    this.showCompanyService.OnChangeCompanyStatus(companyID, event.checked).subscribe(data => {
+      if (data.status) {
+        this.OnChangeUserStatus(event.checked, userID);
+      }
+      this.spinnerService.hide();
+    });
+  }
+
+  OnChangeUserStatus(event: any, userID: any) {
+    this.spinnerService.show();
+    this.showCompanyService.OnChangeUserStatus(event, userID).subscribe(data => {
+      if (data.status) {
+        let statusCompany: string = 'activated';
+        if (!event.checked)
+          statusCompany = 'deactivated';
+        this.toastrService.success("Company account has been " + statusCompany);
+        this.getCompanyDetail();
+      }
+      this.spinnerService.hide();
     });
   }
 }

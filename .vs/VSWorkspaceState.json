@@ -2,26 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-<<<<<<< HEAD
+    "\\src\\app",
     "\\src\\app\\components",
+    "\\src\\app\\components\\dashboard",
     "\\src\\app\\components\\login",
     "\\src\\app\\components\\post-job",
     "\\src\\app\\layouts",
     "\\src\\app\\layouts\\full",
-    "\\src\\app\\layouts\\full\\header"
+    "\\src\\app\\layouts\\full\\sidebar"
   ],
-=======
-    "\\src\\app",
-    "\\src\\app\\components",
-    "\\src\\app\\components\\login",
-    "\\src\\app\\layouts",
-    "\\src\\app\\layouts\\full",
-    "\\src\\app\\layouts\\full\\sidebar",
-    "\\src\\app\\services",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\menu-items"
-  ],
-  "SelectedNode": "\\src\\app\\components\\login\\login.component.ts",
->>>>>>> origin/21-12-2022
+  "SelectedNode": "\\src\\app\\components\\post-job\\post-job.component.ts",
   "PreviewInSolutionExplorer": false
 }

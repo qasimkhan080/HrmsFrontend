@@ -24,6 +24,7 @@ export class RegisterCompanyService {
       "country": companyRegisterRqst.country,
       "zipCode": companyRegisterRqst.zipCode,
       "emailAddress": companyRegisterRqst.emailAddress,
+      "userName": companyRegisterRqst.userName,
       "phoneNumber": companyRegisterRqst.phoneNumber,
       "description": companyRegisterRqst.description,
       "isDeleted": false,

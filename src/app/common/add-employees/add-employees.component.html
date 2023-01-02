@@ -8,11 +8,19 @@
             <ng-template matStepLabel>Personal information</ng-template>
             <mat-form-field appearance="outline">
               <mat-label>Full Name*</mat-label>
-              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.fullName">
+              <input matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.fullName">
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Email*</mat-label>
-              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.email">
+              <input matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.email">
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="employeeRegisterRqst.action=='save'">
+              <mat-label>User Name*</mat-label>
+              <input matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.userName">
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="employeeRegisterRqst.action=='save'">
+              <mat-label>Password*</mat-label>
+              <input matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.password">
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Gender</mat-label>

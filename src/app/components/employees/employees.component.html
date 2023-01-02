@@ -37,9 +37,11 @@
               <thead class="">
                 <tr>
                   <th>#</th>
+                  <th></th>
                   <th>Full Name</th>
                   <th>Email</th>
                   <th>Employment type</th>
+                  <th>Acivated/Deactivated</th>
                   <th></th>
                   <th></th>
                   <th></th>
@@ -53,9 +55,39 @@
                       <span class="custom-control-indicator">{{i+1}}</span>
                     </label>
                   </td>
+                  <td>
+                    <a href="javaScript:void(0);" [matMenuTriggerFor]="menu"
+                       (click)="showUserInfo(emp.userID)">
+                      Update Password
+                    </a>
+                    <mat-menu #menu="matMenu">
+                      <span style="height:220px" mat-menu-item [disableRipple]="true" (click)="$event.stopPropagation()">
+                        <!-- popover content begin -->
+                        <mat-form-field>
+                          <input matInput placeholder="Email" [(ngModel)]="userInfo.email">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field>
+                          <input matInput placeholder="User Name" [(ngModel)]="userInfo.userName">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field>
+                          <input matInput placeholder="Password" [(ngModel)]="userInfo.password">
+                        </mat-form-field>
+                        <br>
+                        <button color="primary" mat-raised-button (click)="UpdateEmployeeRegisteration(emp.userID)">Update</button>
+                        <!-- popover content end  -->
+                      </span>
+                    </mat-menu>
+                  </td>
                   <td>{{emp.fullName}}</td>
                   <td>{{emp.email}}</td>
                   <td>{{emp.employmentType}}</td>
+                  <td>
+                    <mat-slide-toggle color="primary" [(ngModel)]="emp.isActivated"
+                                      [checked]="emp.isActivated"
+                                      (change)="OnChangeEmployeeStatus($event,emp.employeeID,emp.userID)"></mat-slide-toggle>
+                  </td>
                   <td>
                     <button mat-icon-button aria-label="Edit" (click)="openAddEmployeesPopup('update',emp)">
                       <mat-icon>edit</mat-icon>

@@ -14,6 +14,7 @@ export class EmployeesService {
 
   SaveEmployee(employeeObj: any): Observable<any> {
     let url = this.Constants.urlSaveEmployee;
+    employeeObj.companyID = this.userContextService.user$._value.companyID;
     return this.Common.post(url, employeeObj);
   }
 
@@ -24,6 +25,23 @@ export class EmployeesService {
 
   DeleteEmployeeDetail(employeeID: any): Observable<any> {
     let url = this.Constants.urlDeleteEmployeeDetail + '/' + employeeID;
+    return this.Common.get(url);
+  }
+
+  registerUsers(employeeObj: any): Observable<any> {
+    let model = {
+      "Email": employeeObj.email,
+      "Username": employeeObj.userName,
+      "Password": employeeObj.password
+    };
+    let modelString = JSON.stringify(model);
+    let encodedModel = this.Common.EncryptTo64(modelString);
+    let url = this.Constants.urlRegisterEmployee + "/" + encodedModel;
+    return this.Common.get(url);
+  }
+
+  OnChangeEmployeeStatus(employeeID: any, isActivated: any): Observable<any> {
+    let url = this.Constants.urlOnChangeEmployeeStatus + '/' + employeeID + '/' + isActivated;
     return this.Common.get(url);
   }
 }

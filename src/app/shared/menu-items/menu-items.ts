@@ -13,8 +13,8 @@ let MENUITEMS: Menu[] = [
   { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer', permission:'admin,company,employee' },
   { state: 'register-company', name: 'Register Company', type: 'link', icon: 'crop_7_5', permission: 'admin' },
   { state: 'show-company', name: 'Company Detail', type: 'link', icon: 'crop_7_5', permission: 'admin,company' },
-  { state: 'post-job', name: 'Post Job', type: 'link', icon: 'crop_7_5', permission: 'company' },
-  { state: 'show-job', name: 'Show Job', type: 'link', icon: 'crop_7_5', permission: 'company,employee' },
+  { state: 'post-job', name: 'Post Job', type: 'link', icon: 'crop_7_5', permission: 'admin,company' },
+  { state: 'show-job', name: 'Show Job', type: 'link', icon: 'crop_7_5', permission: 'admin,company,employee' },
   { state: 'employees', name: 'Employees', type: 'link', icon: 'crop_7_5', permission: 'company' },
 ];
 @Injectable()
