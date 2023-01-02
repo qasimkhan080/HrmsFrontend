@@ -21,4 +21,33 @@ export class ShowCompanyService {
     let url = this.Constants.urlDeleteCompanyDetail + '/' + companyID;
     return this.Common.get(url);
   }
+
+  deleteUserById(userID: any): Observable<any> {
+    let url = this.Constants.urlDeleteUserInfo + '/' + userID;
+    return this.Common.get(url);
+  }
+
+  showUserInfo(userID: any): Observable<any> {
+    let url = this.Constants.urlShowUserInfo + '/' + userID;
+    return this.Common.get(url);
+  }
+
+  UpdateCompanyRegisteration(model: any): Observable<any> {
+    let url = this.Constants.urlUpdateCompanyRegisteration;
+    return this.Common.post(url,model);
+  }
+
+  OnChangeCompanyStatus(companyID: any,isActivated:any): Observable<any> {
+    let url = this.Constants.urlOnChangeCompanyStatus + '/' + companyID + '/' + isActivated;
+    return this.Common.get(url);
+  }
+
+  OnChangeUserStatus(isActivated: any, userID: any): Observable<any> {
+    let model = {
+      isActivated: isActivated,
+      userID: userID
+    }
+    let url = this.Constants.urlChangeUserInfoStatus;
+    return this.Common.post(url, model);
+  }
 }

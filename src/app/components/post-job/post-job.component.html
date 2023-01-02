@@ -7,9 +7,17 @@
         <mat-horizontal-stepper [linear]="isLinear">
           <mat-step>
             <ng-template matStepLabel>Getting Started</ng-template>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" *ngIf="userRole=='admin'">
+              <mat-form-field appearance="outline">
+                <mat-label>Company</mat-label>
+                <mat-select [(ngModel)]="jobComposeRqst.company">
+                  <mat-option *ngFor="let item of competences" [value]="item1">On Site</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="userRole=='company'">
               <mat-label>Company</mat-label>
-              <input maxlength="100" matInput placeholder="Type here..." [(ngModel)]="jobComposeRqst.company">
+              <input maxlength="100" matInput placeholder="Type here..." disabled [(ngModel)]="jobComposeRqst.company">
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Job Title</mat-label>

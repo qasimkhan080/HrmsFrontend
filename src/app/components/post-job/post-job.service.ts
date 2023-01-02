@@ -16,7 +16,7 @@ export class PostJobService {
     let model = {
       "PostJobId": jobComposeRqstModel.postJobId,
       "jobAddedBy": 'Admin',
-      "companyId": 0,
+      "companyId": jobComposeRqstModel.companyID,
       "companyName": jobComposeRqstModel.company,
       "jobTitle": jobComposeRqstModel.jobTitle,
       "jobLocation": jobComposeRqstModel.jobLocation,

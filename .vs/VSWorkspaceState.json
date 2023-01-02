@@ -4,14 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
+    "\\src\\app\\components\\dashboard",
     "\\src\\app\\components\\login",
+    "\\src\\app\\components\\post-job",
     "\\src\\app\\layouts",
     "\\src\\app\\layouts\\full",
-    "\\src\\app\\layouts\\full\\sidebar",
-    "\\src\\app\\services",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\menu-items"
+    "\\src\\app\\layouts\\full\\sidebar"
   ],
-  "SelectedNode": "\\src\\app\\components\\login\\login.component.ts",
+  "SelectedNode": "\\src\\app\\components\\post-job\\post-job.component.ts",
   "PreviewInSolutionExplorer": false
 }

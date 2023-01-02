@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
       let userData: any = data;
       if (userData && userData.status) {
         userData.user.userRole = userData.userRole;
+        userData.user.companyID = userData.companyID ? userData.companyID : 0;
+        userData.user.companyName = userData.companyName ? userData.companyName: '';
         this.userContextService.setUser(userData.user);
         this.routeStateService.add("Dashboard", '/dashboard', null, true);
         return;

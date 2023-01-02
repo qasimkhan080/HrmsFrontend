@@ -5,15 +5,11 @@
   <!-- column -->
   <div fxFlex.gt-lg="66" fxFlex.gt-md="66" fxFlex.gt-xs="100" fxFlex="100">
 
-    <h2>Home</h2>
+    <h2>Dashboard</h2>
 
-    <button routerLink="/sales"
-            mat-flat-button
-            color="primary"
-            class="action">
-      <mat-icon class="mr-2">add</mat-icon>
-      <span>New sale</span>
-    </button>
+    <app-admin-dashboard *ngIf="userRole=='admin'"></app-admin-dashboard>
+    <app-company-dashboard *ngIf="userRole=='company'"></app-company-dashboard>
+    <app-employee-dashboard *ngIf="userRole=='employee'"></app-employee-dashboard>
+
   </div>
-  <!-- column -->
 </div>
