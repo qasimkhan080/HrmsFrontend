@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSelectChange } from '@angular/material/select';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { PostJobPopupComponent } from '../../common/post-job-popup/post-job-popup.component';
@@ -19,6 +20,7 @@ export class PostJobComponent implements OnInit {
   jobComposeRqst: any = {};
   descriptionBody: any;
   userRole: any = '';
+  companyNameList: any = [];
   quillJobDescTemplateConfig = {
     toolbar: [
       [{ 'header': [1, 2, 3, false] }],
@@ -46,6 +48,9 @@ export class PostJobComponent implements OnInit {
       this.jobComposeRqst.companyID = this.userContextService.user$._value.companyID;
       this.jobComposeRqst.jobBenefit = [];
       this.jobComposeRqst.jobBenefit.push('medical');
+    }
+    if (this.userRole == 'admin') {
+      this.getCompaniesName();
     }
   }
 
@@ -93,5 +98,24 @@ export class PostJobComponent implements OnInit {
       }
       this.spinnerService.hide();
     });
+  }
+
+  getCompaniesName() {
+    this.spinnerService.show();
+    this.postJobService.getCompaniesName().subscribe(data => {
+      if (data.status) {
+        this.companyNameList = data.companyList;
+        if (this.companyNameList && this.companyNameList.length > 0) {
+          this.jobComposeRqst.companyID = this.companyNameList[0].companyID;
+          this.jobComposeRqst.company = this.companyNameList[0].companyName;
+        }
+      }
+      this.spinnerService.hide();
+    });
+  }
+
+  changeCompany(event: MatSelectChange) {
+    this.jobComposeRqst.companyID = event.value;
+    this.jobComposeRqst.company = event.source.triggerValue;
   }
 }

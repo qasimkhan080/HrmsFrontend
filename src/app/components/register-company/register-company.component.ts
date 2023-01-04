@@ -6,6 +6,9 @@ import { ToastrService } from 'ngx-toastr';
 import { RegisterCompanyService } from '../register-company/register-company.service';
 import { PreviewCompanyPopupComponent } from '../../common/preview-company-popup/preview-company-popup.component';
 import { CommonService } from '../../services/common.service';
+import { FileUploader } from 'ng2-file-upload';
+import { environment } from '../../../environments/environment';
+const URL = 'http://localhost:8080/api/upload';
 
 @Component({
   selector: 'app-register-company',
@@ -18,6 +21,8 @@ export class RegisterCompanyComponent implements OnInit {
   secondFormGroup: FormGroup = Object.create(null);
   companyRegisterRqst: any = {};
   descriptionBody: any;
+  response: any = { dbPath: '' };
+  placeholderLabel = "Upload Company Logo";
   quillCompanyDescTemplateConfig = {
     toolbar: [
       [{ 'header': [1, 2, 3, false] }],
@@ -28,6 +33,10 @@ export class RegisterCompanyComponent implements OnInit {
       ['clean'],
     ]
   };
+  public uploader: FileUploader = new FileUploader({
+    url: URL,
+    itemAlias: 'image',
+  });
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private registerCompanyService: RegisterCompanyService,
     private toastrService: ToastrService, private spinnerService: NgxSpinnerService, private Common: CommonService,
     @Inject(MAT_DIALOG_DATA) public d: any, public dialogRef: MatDialogRef<any>) {
@@ -44,6 +53,13 @@ export class RegisterCompanyComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+    };
+    this.uploader.onCompleteItem = (item: any, status: any) => {
+      console.log('Uploaded File Details:', item);
+      this.toastrService.success('File successfully uploaded!');
+    };
   }
 
   companyDetailPreview() {
@@ -85,5 +101,15 @@ export class RegisterCompanyComponent implements OnInit {
 
   OnDescriptionContentChanged(content: any) {
     this.companyRegisterRqst.description = content.html;
+  }
+
+  uploadFinished = (event:any) => {
+    this.response = event;
+    this.companyRegisterRqst.companyLogo = this.response.dbPath;
+  }
+
+  createImgPath(imgPath: string) {
+    if (imgPath)
+      return environment.ApiUrl + '/' + imgPath;
   }
 }

@@ -16,4 +16,9 @@ export class DashboardService {
     let url = this.Constants.urlGetAdminDashboardData;
     return this.Common.get(url);
   }
+
+  getCompanyDashboardData(companyID: any): Observable<any> {
+    let url = this.Constants.urlGetCompanyDashboardData + '/' + companyID;
+    return this.Common.get(url);
+  }
 }

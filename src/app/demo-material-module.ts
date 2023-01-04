@@ -49,6 +49,7 @@ import { PlatformModule } from '@angular/cdk/platform';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 /**
  * NgModule that includes all Material modules that are required to serve the demo-app.
@@ -97,7 +98,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     OverlayModule,
     PlatformModule,
     PortalModule,
-    NgxPaginationModule
-  ]
+    NgxPaginationModule,
+    UploadFileComponent
+  ],
+  declarations: [UploadFileComponent]
 })
 export class DemoMaterialModule { }

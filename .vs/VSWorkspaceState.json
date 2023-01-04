@@ -5,12 +5,12 @@
     "\\src\\app",
     "\\src\\app\\components",
     "\\src\\app\\components\\dashboard",
-    "\\src\\app\\components\\login",
-    "\\src\\app\\components\\post-job",
-    "\\src\\app\\layouts",
-    "\\src\\app\\layouts\\full",
-    "\\src\\app\\layouts\\full\\sidebar"
+    "\\src\\app\\components\\register-company",
+    "\\src\\app\\components\\upload-file",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\menu-items",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\components\\post-job\\post-job.component.ts",
+  "SelectedNode": "\\src\\app\\components\\upload-file\\upload-file.component.ts",
   "PreviewInSolutionExplorer": false
 }

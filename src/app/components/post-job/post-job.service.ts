@@ -33,4 +33,9 @@ export class PostJobService {
     let url = this.Constants.urlSavePostJob;
     return this.Common.post(url, model);
   }
+
+  getCompaniesName() {
+    let url = this.Constants.urlGetCompaniesName;
+    return this.Common.get(url);
+  }
 }

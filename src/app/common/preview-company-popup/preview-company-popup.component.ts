@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-preview-company-popup',
@@ -19,5 +20,10 @@ export class PreviewCompanyPopupComponent implements OnInit {
       this.dialogRef.close(true);
     else
       this.dialogRef.close(false);
+  }
+
+  createImgPath(imgPath: string) {
+    if (imgPath)
+      return environment.ApiUrl + '/' + imgPath;
   }
 }

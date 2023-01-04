@@ -7,6 +7,10 @@
         <mat-horizontal-stepper [linear]="isLinear">
           <mat-step>
             <ng-template matStepLabel>Getting Started</ng-template>
+            <div class="row" style="margin-left:5px">
+              <app-upload-file [placeholderLabel]="placeholderLabel" (onUploadFinished)="uploadFinished($event)"></app-upload-file>
+              <img *ngIf="response.dbPath" [src]="createImgPath(response.dbPath)" alt="Company Logo" style="width:150px; height:100px;margin-left:100px" />
+            </div>
             <mat-form-field appearance="outline">
               <mat-label>Company Name</mat-label>
               <input matInput placeholder="Type here..." [(ngModel)]="companyRegisterRqst.companyName">

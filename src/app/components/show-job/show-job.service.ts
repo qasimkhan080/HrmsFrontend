@@ -21,4 +21,9 @@ export class ShowJobService {
     let url = this.Constants.urlDeletePostedJob + '/' + postJobId;
     return this.Common.get(url);
   }
+
+  onChangeJobActivationStatus(postJobId: any, isActivated: any): Observable<any> {
+    let url = this.Constants.urlOnChangeJobActivationStatus + '/' + postJobId + '/' + isActivated;
+    return this.Common.get(url);
+  }
 }
