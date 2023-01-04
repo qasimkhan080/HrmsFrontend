@@ -28,6 +28,7 @@
                 <thead class="">
                   <tr>
                     <th>#</th>
+                    <th>Acivated/Deactivated</th>
                     <th>Company Name</th>
                     <th>Job Title</th>
                     <th>Job Location</th>
@@ -43,6 +44,11 @@
                         <input type="checkbox" class="custom-control-input">
                         <span class="custom-control-indicator">{{i+1}}</span>
                       </label>
+                    </td>
+                    <td>
+                      <mat-slide-toggle color="primary" [(ngModel)]="job.isActivated"
+                                        [checked]="job.isActivated"
+                                        (change)="onChangeJobActivationStatus($event,job.postJobId)"></mat-slide-toggle>
                     </td>
                     <td>{{job.company}}</td>
                     <td>{{job.jobTitle}}</td>

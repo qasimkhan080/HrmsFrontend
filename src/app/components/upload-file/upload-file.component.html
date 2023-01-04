@@ -1,0 +1,12 @@
+<br />
+<div class="form-group">
+  <div class="input-group shadow">
+    <span class="input-group-text px-3 text-muted">
+      <img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Downloads-icon.png" style="width:30px;height:30px"/>
+    </span>
+    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" class="d-none">
+    <input type="text" [value]="fileName" class="form-control form-control-lg" [placeholder]="placeholderLabel">
+    <button class="browse btn btn-primary px-4" type="button" (click)="file.click()">
+    <i class="fas fa-image"></i> Browse</button>
+  </div>
+</div>

@@ -16,6 +16,7 @@ export class RegisterCompanyService {
     let model = {
       "companyID": companyRegisterRqst.companyID,
       "companyName": companyRegisterRqst.companyName,
+      "companyLogo": companyRegisterRqst.companyLogo,
       "owner": companyRegisterRqst.owner,
       "industry": companyRegisterRqst.industry,
       "streetAddress": companyRegisterRqst.streetAddress,

@@ -142,4 +142,17 @@ export class ShowJobComponent implements OnInit {
       this.getPostedJob();
     });
   }
+
+  onChangeJobActivationStatus(event: any, postJobId: any) {
+    this.spinnerService.show();
+    this.showJobService.onChangeJobActivationStatus(postJobId, event.checked).subscribe(data => {
+      if (data.status) {
+        let statusJob: string = 'activated';
+        if (!event.checked)
+          statusJob = 'deactivated';
+        this.toastrService.success("Job has been " + statusJob);
+      }
+      this.spinnerService.hide();
+    });
+  }
 }

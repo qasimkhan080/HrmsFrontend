@@ -18,6 +18,7 @@ export class ConstantsService {
   public readonly urlSavePostJob = environment.ApiUrl + '/api/PostJob/SavePostJob';
   public readonly urlGetPostedJob = environment.ApiUrl + '/api/PostJob/GetPostedJob';
   public readonly urlDeletePostedJob = environment.ApiUrl + '/api/PostJob/DeletePostedJob';
+  public readonly urlOnChangeJobActivationStatus = environment.ApiUrl + '/api/PostJob/OnChangeJobActivationStatus';
   //Register Company Detail URLs
   public readonly urlRegisterCompanyDetail = environment.ApiUrl + '/api/CompanyRegistration/RegisterCompanyDetail';
   public readonly urlGetCompanyDetail = environment.ApiUrl + '/api/CompanyRegistration/GetCompanyDetail';
@@ -33,4 +34,6 @@ export class ConstantsService {
   //Dashboard Module URLs
   public readonly urlGetAdminDashboardData = environment.ApiUrl + '/api/Dashboard/GetAdminDashboardData';
   public readonly urlGetCompanyDashboardData = environment.ApiUrl + '/api/Dashboard/GetCompanyDashboardData';
+  //Upload File Url
+  public readonly urlUpload = environment.ApiUrl + '/api/UploadFile/Upload';
 }
