@@ -1,0 +1,13 @@
+<div class="modal-content">
+  <div class="container emp-profile">
+    <h2 mat-dialog-title>Capture Webcam Photo</h2>
+    <form method="post">
+      <div class="row">
+        <webcam [trigger]="triggerObservable"
+                (imageCapture)="handleImage($event)"></webcam>
+      </div>
+    </form>
+    <button class="btn btn-success" (click)="triggerSnapshot(true);">Take A Snapshot</button>
+    <button mat-stroked-button class="inline-btn default-btn" color="black" (click)="triggerSnapshot(false);" mat-dialog-close>Cancel</button>
+  </div>
+  </div>

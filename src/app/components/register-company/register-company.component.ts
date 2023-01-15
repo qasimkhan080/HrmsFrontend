@@ -8,7 +8,6 @@ import { PreviewCompanyPopupComponent } from '../../common/preview-company-popup
 import { CommonService } from '../../services/common.service';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
-const URL = 'http://localhost:8080/api/upload';
 
 @Component({
   selector: 'app-register-company',
@@ -34,7 +33,6 @@ export class RegisterCompanyComponent implements OnInit {
     ]
   };
   public uploader: FileUploader = new FileUploader({
-    url: URL,
     itemAlias: 'image',
   });
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private registerCompanyService: RegisterCompanyService,

@@ -1,11 +1,24 @@
 <div class="modal-content" *ngIf="model.dialogueName == 'add-employee'">
   <div class="container emp-profile">
-    <mat-card>
+    <mat-card style="height:600px;overflow-y:auto">
       <mat-card-content>
         <mat-card-title>{{model.heading}}</mat-card-title>
         <mat-horizontal-stepper [linear]="isLinear">
           <mat-step>
             <ng-template matStepLabel>Personal information</ng-template>
+            <div class="row">
+              <div class="col-md-6">
+                <br />
+                <button class="btn btn-primary" (click)="openWebcam()">Webcam Picture</button>
+                <br />
+                OR
+                <app-upload-file [placeholderLabel]="placeholderLabel" (onUploadFinished)="uploadFinished($event)"></app-upload-file>
+                <button class="btn btn-primary" (click)="resetPicture()">Reset Picture</button>
+              </div>
+              <div class="col-md-6">
+                <img [src]="createImgPath()" style="width: 318px;height: 230px;">
+              </div>
+            </div>
             <mat-form-field appearance="outline">
               <mat-label>Full Name*</mat-label>
               <input matInput placeholder="Type here..." [(ngModel)]="employeeRegisterRqst.fullName">

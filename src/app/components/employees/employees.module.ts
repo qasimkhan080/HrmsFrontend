@@ -9,10 +9,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill';
 import { AddEmployeesComponent } from '../../common/add-employees/add-employees.component';
 import { PreviewEmployeeDetailPopupComponent } from '../../common/preview-employee-detail-popup/preview-employee-detail-popup.component';
+import { WebcamModule } from 'ngx-webcam';
+import { WebcamComponent } from '../../common/webcam/webcam.component';
 
 @NgModule({
   declarations: [
-    EmployeesComponent, AddEmployeesComponent, PreviewEmployeeDetailPopupComponent
+    EmployeesComponent, AddEmployeesComponent, PreviewEmployeeDetailPopupComponent,
+    WebcamComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import { PreviewEmployeeDetailPopupComponent } from '../../common/preview-employ
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    WebcamModule,
     QuillModule.forRoot(),
   ]
 })

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-preview-employee-detail-popup',
@@ -17,5 +18,14 @@ export class PreviewEmployeeDetailPopupComponent implements OnInit {
 
   Cancel() {
     this.dialogRef.close();
+  }
+
+  createImgPath() {
+    if (this.previewEmployeeRsp.photoType && this.previewEmployeeRsp.photoType == 'webcamurl') {
+      return this.previewEmployeeRsp.employeePhoto;
+    }
+    else {
+      return environment.ApiUrl + '/' + this.previewEmployeeRsp.employeePhoto;
+    }
   }
 }
