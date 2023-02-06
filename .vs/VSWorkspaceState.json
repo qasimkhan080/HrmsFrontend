@@ -1,15 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\app",
-    "\\src\\app\\common",
-    "\\src\\app\\common\\add-employees",
-    "\\src\\app\\common\\preview-employee-detail-popup",
-    "\\src\\app\\components",
-    "\\src\\app\\components\\employees",
-    "\\src\\environments"
+    "\\src"
   ],
-  "SelectedNode": "\\src\\app\\common\\add-employees\\add-employees.component.ts",
   "PreviewInSolutionExplorer": false
 }
