@@ -30,9 +30,15 @@ export class RegisterCompanyService {
       "description": companyRegisterRqst.description,
       "isDeleted": false,
       "createdBy": this.userContextService.user$._value.id,
+      "noOfEmployees": '',
+      "website": '',
+      "linkedIn": '',
+      "Status": 'p',
       "action": companyRegisterRqst.action
     };
-    let url = this.Constants.urlRegisterCompanyDetail;
+    let modelString = JSON.stringify(model);
+    let encodedModel = this.Common.EncryptTo64(modelString);
+    let url = this.Constants.urlRegisterCompanyDetail + "/" + encodedModel;
     return this.Common.post(url, model);
   }
 

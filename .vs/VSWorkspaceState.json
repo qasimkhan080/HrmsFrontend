@@ -4,13 +4,12 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\dashboard",
+    "\\src\\app\\components\\employees",
     "\\src\\app\\components\\register-company",
-    "\\src\\app\\components\\upload-file",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\menu-items",
+    "\\src\\app\\components\\show-company",
+    "\\src\\app\\services",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\components\\upload-file\\upload-file.component.ts",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

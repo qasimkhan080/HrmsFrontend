@@ -78,7 +78,10 @@ export class ShowCompanyComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(ok => {
       if (ok) {
-        this.deleteUserById(company.userID,company.companyID);
+        if (company.userID)
+          this.deleteUserById(company.userID, company.companyID);
+        else
+          this.deleteCompanyById(company.companyID);
       }
     });
   }
