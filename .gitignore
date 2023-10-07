@@ -45,3 +45,6 @@ Thumbs.db
 /.vs/angular-admin/FileContentIndex
 *.vsidx
 *.lock
+*.sqlite-journal
+*.json
+*.suo
