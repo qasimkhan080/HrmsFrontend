@@ -43,3 +43,6 @@ Thumbs.db
 /.vs/angular-admin/FileContentIndex/36fdcdc7-d260-4538-a668-798544e2c14e.vsidx
 /.vs/angular-admin/FileContentIndex/read.lock
 /.vs/angular-admin/FileContentIndex
+/.vs/HRM_Admin/FileContentIndex/cc751f51-5f3d-4884-a66a-04c3348302bb.vsidx
+*.vsidx
+*.lock
