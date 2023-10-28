@@ -26,8 +26,9 @@ export class LoginComponent implements OnInit {
 
   onClickLogin() {
     let userModel = {
-      Username: this.userName,
-      Password: this.password
+      Email: this.userName,
+      Password: this.password,
+      Role: 'Admin'
     }
     this.spinnerService.show();
     let url = this.constantsService.urlLogin;
